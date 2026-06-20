@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="資産ダッシュボード">
+<title>資産ダッシュボード</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+    background: #0F172A;
+    color: #E2E8F0;
+    min-height: 100vh;
+  }
+  #header {
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border-bottom: 1px solid #1E3A5F;
+    padding: 20px 20px 0;
+  }
+  .header-top { display: flex; align-items: baseline; gap: 12px; margin-bottom: 4px; }
+  .label-small { font-size: 11px; letter-spacing: 0.15em; color: #64748B; text-transform: uppercase; }
+  #save-status { font-size: 11px; color: #10B981; }
+  h1 { font-size: 28px; font-weight: 700; color: #F1F5F9; margin-bottom: 12px; }
+  #cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 16px; }
+  .card {
+    background: #1E293B; border-radius: 8px; padding: 10px 12px;
+    border-left: 3px solid;
+  }
+  .card-label { font-size: 10px; color: #64748B; margin-bottom: 2px; }
+  .card-value { font-size: 18px; font-weight: 700; }
+  .card-diff { font-size: 11px; }
+  #total-bar {
+    text-align: center; padding: 8px 0 16px;
+    border-top: 1px solid #1E3A5F; display: none;
+  }
+  #total-label { font-size: 11px; color: #64748B; }
+  #total-value { font-size: 24px; font-weight: 800; color: #F1F5F9; margin-left: 12px; }
+  #total-diff { font-size: 13px; margin-left: 8px; }
+  #tabs { display: flex; }
+  .tab-btn {
+    padding: 10px 20px; border: none; background: none; cursor: pointer;
+    color: #64748B; border-bottom: 2px solid transparent;
+    font-size: 13px; font-weight: 400;
+  }
+  .tab-btn.active { color: #3B82F6; border-bottom: 2px solid #3B82F6; font-weight: 700; }
+  #content { padding: 20px; }
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* Chart */
+  #fund-toggles { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .fund-toggle {
+    padding: 4px 12px; border-radius: 20px; border: 1px solid;
+    font-size: 12px; cursor: pointer; background: transparent;
+  }
+  #chart-wrap { position: relative; height: 280px; }
+  #no-data-chart { text-align: center; color: #475569; padding-top: 60px; font-size: 14px; }
+
+  /* Table */
+  #table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: right; padding: 8px 6px; font-weight: 500; color: #64748B; border-bottom: 1px solid #1E3A5F; }
+  th:first-child { text-align: left; }
+  td { padding: 10px 6px; border-bottom: 1px solid #1E293B; text-align: right; }
+  td:first-child { text-align: left; color: #94A3B8; }
+  .td-total { color: #F1F5F9; font-weight: 600; }
+  .btn-edit { background: none; border: none; color: #3B82F6; cursor: pointer; font-size: 14px; margin-right: 6px; }
+  .btn-del { background: none; border: none; color: #EF4444; cursor: pointer; font-size: 14px; }
+
+  /* Input */
+  #input-panel { max-width: 400px; }
+  .field { margin-bottom: 12px; }
+  .field label { display: block; font-size: 12px; margin-bottom: 4px; }
+  .field input {
+    width: 100%; background: #1E293B; border-radius: 8px;
+    color: #F1F5F9; padding: 10px 12px; font-size: 16px;
+  }
+  #date-input { border: 1px solid #334155; }
+  .hint {
+    margin-top: 8px; padding: 10px 12px; background: #1E293B;
+    border-radius: 8px; font-size: 12px; color: #64748B; margin-bottom: 16px;
+  }
+  #submit-btn {
+    width: 100%; padding: 14px;
+    background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+    border: none; border-radius: 10px; color: white;
+    font-size: 15px; font-weight: 700; cursor: pointer;
+  }
+  #cancel-btn {
+    width: 100%; padding: 12px; background: none;
+    border: 1px solid #334155; border-radius: 10px;
+    color: #64748B; font-size: 14px; cursor: pointer; margin-top: 8px; display: none;
+  }
+  .up { color: #F87171; }
+  .down { color: #60A5FA; }
+
+  /* Signal */
+  #signal-bar {
+    display: none;
+    margin: 0 0 12px 0;
+    border-radius: 10px;
+    padding: 12px 16px;
+    text-align: center;
+  }
+  #signal-bar.s-watch { background: rgba(120,53,15,0.3); border: 1px solid #F59E0B; }
+  #signal-bar.s-buy   { background: rgba(154,52,18,0.3); border: 1px solid #F97316; }
+  #signal-bar.s-full  { background: rgba(127,29,29,0.3); border: 1px solid #EF4444; }
+  #signal-bar.s-ok    { background: rgba(20,83,45,0.3);  border: 1px solid #22C55E; }
+  .signal-icon  { font-size: 22px; }
+  .signal-title { font-size: 15px; font-weight: 700; margin: 2px 0; }
+  .signal-detail { font-size: 11px; color: #94A3B8; }
+  #signal-rows  { margin-top: 8px; display: flex; flex-direction: column; gap: 4px; }
+  .signal-row {
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(15,23,42,0.5); border-radius: 6px; padding: 5px 10px; font-size: 12px;
+  }
+  .signal-row .sr-label { color: #94A3B8; }
+  .signal-row .sr-pct   { font-weight: 700; }
+  .signal-row .sr-hit   { font-size: 10px; padding: 1px 6px; border-radius: 10px; margin-left: 6px; }
+  .hit-watch { background: rgba(245,158,11,0.15); color: #F59E0B; }
+  .hit-buy   { background: rgba(249,115,22,0.15); color: #F97316; }
+  .hit-full  { background: rgba(239,68,68,0.15);  color: #EF4444; }
+</style>
+</head>
+<body>
+
+<div id="header">
+  <div class="header-top">
+    <span class="label-small">iGrow Portfolio</span>
+    <span id="save-status"></span>
+  </div>
+  <h1>資産ダッシュボード</h1>
+  <div id="signal-bar">
+    <div class="signal-icon" id="signal-icon"></div>
+    <div class="signal-title" id="signal-title"></div>
+    <div class="signal-detail" id="signal-detail"></div>
+    <div id="signal-rows"></div>
+  </div>
+  <div id="cards"></div>
+  <div id="total-bar">
+    <span id="total-label">合計（4銘柄）</span>
+    <span id="total-value"></span>
+    <span id="total-diff"></span>
+  </div>
+  <div id="tabs">
+    <button class="tab-btn" onclick="switchTab('chart')">グラフ</button>
+    <button class="tab-btn" onclick="switchTab('table')">履歴</button>
+    <button class="tab-btn active" onclick="switchTab('input')">入力</button>
+  </div>
+</div>
+
+<div id="content">
+  <!-- Chart -->
+  <div id="panel-chart" class="panel">
+    <div id="fund-toggles"></div>
+    <div id="no-data-chart"><div style="font-size:40px;margin-bottom:12px">📊</div>データを入力するとグラフが表示されます</div>
+    <div id="chart-wrap" style="display:none"><canvas id="myChart"></canvas></div>
+  </div>
+
+  <!-- Table -->
+  <div id="panel-table" class="panel">
+    <div id="no-data-table" style="text-align:center;color:#475569;padding-top:60px;font-size:14px">
+      <div style="font-size:40px;margin-bottom:12px">📋</div>まだ記録がありません
+    </div>
+    <div id="table-wrap" style="display:none">
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align:left">日付</th>
+            <th style="color:#3B82F6">SP500</th>
+            <th style="color:#F59E0B">FANG+</th>
+            <th style="color:#10B981">米モメ</th>
+            <th style="color:#EF4444">日モメ</th>
+            <th>合計</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Input -->
+  <div id="panel-input" class="panel active">
+    <div id="input-panel">
+      <div class="field" style="margin-bottom:20px">
+        <label style="font-size:11px;color:#64748B">日付</label>
+        <input type="date" id="date-input">
+      </div>
+      <div style="margin-bottom:8px;font-size:11px;color:#64748B">時価評価額（万円単位）</div>
+      <div class="field">
+        <label style="color:#3B82F6">S&amp;P500</label>
+        <input type="number" id="f-sp500" placeholder="ここに4行まとめてペースト可" style="border:1px solid #3B82F644">
+      </div>
+      <div class="field">
+        <label style="color:#F59E0B">FANG+</label>
+        <input type="number" id="f-fang" placeholder="例: 305.3" style="border:1px solid #F59E0B44">
+      </div>
+      <div class="field">
+        <label style="color:#10B981">米国モメンタム</label>
+        <input type="number" id="f-us" placeholder="例: 305.3" style="border:1px solid #10B98144">
+      </div>
+      <div class="field">
+        <label style="color:#EF4444">日本モメンタム</label>
+        <input type="number" id="f-jp" placeholder="例: 305.3" style="border:1px solid #EF444444">
+      </div>
+      <div class="hint">💡 S&amp;P500欄にClaudeのコードブロックを丸ごとペーストすると4つ自動入力されます</div>
+      <button id="submit-btn" onclick="handleSubmit()">記録する</button>
+      <button id="cancel-btn" onclick="cancelEdit()">キャンセル</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const STORAGE_KEY = 'igrow-dashboard-records';
+const FUNDS = [
+  { key: 'sp500', label: 'S&P500', short: 'SP500', color: '#3B82F6', inputId: 'f-sp500' },
+  { key: 'fang',  label: 'FANG+',  short: 'FANG+', color: '#F59E0B', inputId: 'f-fang' },
+  { key: 'usMomentum', label: '米国モメンタム', short: '米モメ', color: '#10B981', inputId: 'f-us' },
+  { key: 'jpMomentum', label: '日本モメンタム', short: '日モメ', color: '#EF4444', inputId: 'f-jp' },
+];
+
+let records = [];
+let editId = null;
+let visibleFunds = { sp500: true, fang: true, usMomentum: true, jpMomentum: true };
+let chartInstance = null;
+
+
+const SIGNALS = [
+  { key: 'full',  days: 20, pct: -25, label: '🔴 全力追加シグナル', cls: 's-full', hitCls: 'hit-full', desc: '20日間で-25%超の暴落' },
+  { key: 'buy',   days: 10, pct: -15, label: '🟠 買い増しシグナル',  cls: 's-buy',  hitCls: 'hit-buy',  desc: '10日間で-15%超の下落' },
+  { key: 'watch', days:  5, pct:  -8, label: '🟡 警戒シグナル',      cls: 's-watch',hitCls: 'hit-watch', desc: '5日間で-8%超の下落' },
+];
+
+function renderSignal() {
+  const bar = document.getElementById('signal-bar');
+  const icon = document.getElementById('signal-icon');
+  const title = document.getElementById('signal-title');
+  const detail = document.getElementById('signal-detail');
+  const rows = document.getElementById('signal-rows');
+
+  if (records.length < 2) { bar.style.display = 'none'; return; }
+
+  const latest = records[records.length - 1];
+  const latestTotal = parseFloat(totalWan(latest));
+  if (isNaN(latestTotal)) { bar.style.display = 'none'; return; }
+
+  // 各シグナルの現在変化率を計算
+  let worstSignal = null;
+  let rowsHtml = '';
+
+  SIGNALS.forEach(sig => {
+    const pastIdx = records.length - 1 - sig.days;
+    if (pastIdx < 0) {
+      rowsHtml += `<div class="signal-row"><span class="sr-label">${sig.days}日前比</span><span class="sr-pct" style="color:#475569">データ不足</span></div>`;
+      return;
+    }
+    const pastTotal = parseFloat(totalWan(records[pastIdx]));
+    if (isNaN(pastTotal) || pastTotal === 0) return;
+    const changePct = ((latestTotal - pastTotal) / pastTotal) * 100;
+    const hit = changePct <= sig.pct;
+    const color = changePct < 0 ? '#F87171' : '#10B981';
+    rowsHtml += `<div class="signal-row">
+      <span class="sr-label">${sig.days}日前比</span>
+      <span>
+        <span class="sr-pct" style="color:${color}">${changePct >= 0 ? '+' : ''}${changePct.toFixed(1)}%</span>
+        ${hit ? `<span class="sr-hit ${sig.hitCls}">HIT</span>` : ''}
+      </span>
+    </div>`;
+    if (hit && !worstSignal) worstSignal = sig;
+  });
+
+  bar.className = 'signal-bar';
+  bar.style.display = 'block';
+  rows.innerHTML = rowsHtml;
+
+  if (worstSignal) {
+    bar.classList.add(worstSignal.cls);
+    icon.textContent = worstSignal.label.slice(0, 2);
+    title.textContent = worstSignal.label.slice(3);
+    detail.textContent = worstSignal.desc;
+    title.style.color = '#F1F5F9';
+  } else {
+    bar.classList.add('s-ok');
+    icon.textContent = '✅';
+    title.textContent = '通常相場';
+    title.style.color = '#22C55E';
+    detail.textContent = '買い増しシグナルなし';
+  }
+}
+
+// Init
+function init() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) records = JSON.parse(saved);
+  } catch(e) {}
+
+  // Set today's date
+  document.getElementById('date-input').value = new Date().toISOString().slice(0, 10);
+
+  // Fund toggles
+  const toggles = document.getElementById('fund-toggles');
+  FUNDS.forEach(f => {
+    const btn = document.createElement('button');
+    btn.className = 'fund-toggle';
+    btn.id = 'toggle-' + f.key;
+    btn.textContent = f.short;
+    btn.style.borderColor = f.color;
+    btn.style.color = f.color;
+    btn.style.background = f.color + '33';
+    btn.onclick = () => { visibleFunds[f.key] = !visibleFunds[f.key]; renderAll(); };
+    toggles.appendChild(btn);
+  });
+
+  // Paste handler
+  document.getElementById('f-sp500').addEventListener('paste', function(e) {
+    const text = e.clipboardData.getData('text');
+    const lines = text.trim().split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+    if (lines.length >= 2) {
+      e.preventDefault();
+      FUNDS.forEach((f, i) => {
+        if (lines[i] != null) document.getElementById(f.inputId).value = lines[i];
+      });
+    }
+  });
+
+  renderAll();
+}
+
+function parseWan(str) {
+  const n = parseFloat(str);
+  if (isNaN(n)) return null;
+  if (n >= 1000) return Math.round(n / 10000 * 10) / 10;
+  return Math.round(n * 10) / 10;
+}
+
+function totalWan(r) {
+  const vals = FUNDS.map(f => r[f.key]);
+  if (vals.some(v => v == null)) return null;
+  return vals.reduce((a, b) => a + b, 0).toFixed(1);
+}
+
+function saveRecords() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+  const s = document.getElementById('save-status');
+  s.textContent = '保存済み ✓';
+  setTimeout(() => s.textContent = '', 2000);
+}
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach((b, i) => {
+    b.classList.toggle('active', ['chart','table','input'][i] === tab);
+  });
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + tab).classList.add('active');
+}
+
+function handleSubmit() {
+  const date = document.getElementById('date-input').value;
+  if (!date) return;
+  const entry = { id: editId || Date.now(), date };
+  FUNDS.forEach(f => entry[f.key] = parseWan(document.getElementById(f.inputId).value));
+
+  if (editId) {
+    records = records.map(r => r.id === editId ? entry : r);
+    editId = null;
+  } else {
+    const exists = records.find(r => r.date === date);
+    if (exists) records = records.map(r => r.date === date ? { ...entry, id: r.id } : r);
+    else records.push(entry);
+  }
+  records.sort((a, b) => a.date.localeCompare(b.date));
+  saveRecords();
+  clearForm();
+  renderAll();
+}
+
+function clearForm() {
+  document.getElementById('date-input').value = new Date().toISOString().slice(0, 10);
+  FUNDS.forEach(f => document.getElementById(f.inputId).value = '');
+  document.getElementById('submit-btn').textContent = '記録する';
+  document.getElementById('cancel-btn').style.display = 'none';
+  editId = null;
+}
+
+function cancelEdit() { clearForm(); }
+
+function startEdit(id) {
+  const r = records.find(x => x.id === id);
+  if (!r) return;
+  editId = id;
+  document.getElementById('date-input').value = r.date;
+  FUNDS.forEach(f => document.getElementById(f.inputId).value = r[f.key] ?? '');
+  document.getElementById('submit-btn').textContent = '更新する';
+  document.getElementById('cancel-btn').style.display = 'block';
+  switchTab('input');
+}
+
+function deleteRecord(id) {
+  records = records.filter(r => r.id !== id);
+  saveRecords();
+  renderAll();
+}
+
+function renderAll() {
+  renderCards();
+  renderSignal();
+  renderChart();
+  renderTable();
+  renderToggles();
+}
+
+function renderCards() {
+  const latest = records[records.length - 1];
+  const prev = records[records.length - 2];
+  const container = document.getElementById('cards');
+  container.innerHTML = '';
+  if (!latest) return;
+
+  FUNDS.forEach(f => {
+    const d = prev && prev[f.key] != null && latest[f.key] != null
+      ? (latest[f.key] - prev[f.key]).toFixed(1) : null;
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.borderLeftColor = f.color;
+    card.innerHTML = `
+      <div class="card-label">${f.label}</div>
+      <div class="card-value" style="color:${f.color}">${latest[f.key] != null ? latest[f.key] + '万' : '―'}</div>
+      ${d != null ? `<div class="card-diff ${parseFloat(d)>=0?'up':'down'}">${parseFloat(d)>=0?'▲':'▼'} ${Math.abs(d)}万</div>` : ''}
+    `;
+    container.appendChild(card);
+  });
+
+  const totalBar = document.getElementById('total-bar');
+  const t = totalWan(latest);
+  if (t) {
+    totalBar.style.display = 'block';
+    document.getElementById('total-value').textContent = t + ' 万円';
+    if (prev && totalWan(prev)) {
+      const td = (parseFloat(t) - parseFloat(totalWan(prev))).toFixed(1);
+      const el = document.getElementById('total-diff');
+      el.textContent = `(${parseFloat(td)>=0?'+':''}${td}万)`;
+      el.className = parseFloat(td) >= 0 ? 'up' : 'down';
+    }
+  }
+}
+
+function renderToggles() {
+  FUNDS.forEach(f => {
+    const btn = document.getElementById('toggle-' + f.key);
+    if (!btn) return;
+    btn.style.background = visibleFunds[f.key] ? f.color + '33' : 'transparent';
+    btn.style.color = visibleFunds[f.key] ? f.color : '#64748B';
+  });
+}
+
+function renderChart() {
+  const noData = document.getElementById('no-data-chart');
+  const wrap = document.getElementById('chart-wrap');
+  if (records.length === 0) { noData.style.display = 'block'; wrap.style.display = 'none'; return; }
+  noData.style.display = 'none'; wrap.style.display = 'block';
+
+  const labels = records.map(r => r.date.slice(5));
+  const datasets = FUNDS.filter(f => visibleFunds[f.key]).map(f => ({
+    label: f.label,
+    data: records.map(r => r[f.key]),
+    borderColor: f.color,
+    backgroundColor: f.color,
+    pointRadius: 4,
+    tension: 0.3,
+    spanGaps: true,
+  }));
+
+  if (chartInstance) { chartInstance.destroy(); }
+  chartInstance = new Chart(document.getElementById('myChart'), {
+    type: 'line',
+    data: { labels, datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { labels: { color: '#94A3B8', font: { size: 11 } } },
+        tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y}万` } }
+      },
+      scales: {
+        x: { ticks: { color: '#64748B', font: { size: 11 } }, grid: { color: '#1E3A5F' } },
+        y: { ticks: { color: '#64748B', font: { size: 11 }, callback: v => v + '万' }, grid: { color: '#1E3A5F' } }
+      }
+    }
+  });
+}
+
+function renderTable() {
+  const noData = document.getElementById('no-data-table');
+  const wrap = document.getElementById('table-wrap');
+  const tbody = document.getElementById('table-body');
+  if (records.length === 0) { noData.style.display = 'block'; wrap.style.display = 'none'; return; }
+  noData.style.display = 'none'; wrap.style.display = 'block';
+  tbody.innerHTML = '';
+
+  [...records].reverse().forEach(r => {
+    const idx = records.indexOf(r);
+    const p = records[idx - 1];
+    const tr = document.createElement('tr');
+    let html = `<td>${r.date.slice(5)}</td>`;
+    FUNDS.forEach(f => {
+      const d = p && p[f.key] != null && r[f.key] != null ? r[f.key] - p[f.key] : null;
+      html += `<td><span style="color:${f.color}">${r[f.key] ?? '―'}</span>`;
+      if (d != null) html += `<span style="font-size:10px;margin-left:3px" class="${d>=0?'up':'down'}">${d>=0?'+':''}${d.toFixed(1)}</span>`;
+      html += '</td>';
+    });
+    html += `<td class="td-total">${totalWan(r) ?? '―'}</td>`;
+    html += `<td><button class="btn-edit" onclick="startEdit(${r.id})">✏️</button><button class="btn-del" onclick="deleteRecord(${r.id})">🗑️</button></td>`;
+    tr.innerHTML = html;
+    tbody.appendChild(tr);
+  });
+}
+
+init();
+</script>
+</body>
+</html>
