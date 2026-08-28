@@ -367,6 +367,13 @@ td:first-child { text-align:left; color:#94A3B8; }
       <div id="settings-saved" style="text-align:center;font-size:11px;color:#10B981;margin-top:6px;display:none">保存しました ✓</div>
 
       <div style="margin-top:18px;border-top:1px solid #334155;padding-top:14px">
+        <div style="font-size:12px;font-weight:700;color:#F1F5F9;margin-bottom:10px">☁️ サーバー同期</div>
+        <button onclick="forceResyncAll(this)" style="width:100%;padding:10px;background:#1E3A5F;border:1px solid #10B981;border-radius:8px;color:#10B981;font-size:13px;cursor:pointer;margin-bottom:6px">🔄 全記録をサーバーへ再送信</button>
+        <div style="font-size:10px;color:#64748B">今この端末にある全ての記録を、サーバーが持っていなくても・古くても、強制的に上書き送信します。「サーバーに反映されていない記録がある」と思った時に使ってください。</div>
+        <div id="resync-status" style="text-align:center;font-size:11px;margin-top:6px;display:none"></div>
+      </div>
+
+      <div style="margin-top:18px;border-top:1px solid #334155;padding-top:14px">
         <div style="font-size:12px;font-weight:700;color:#F1F5F9;margin-bottom:10px">💾 バックアップ／復元</div>
         <button onclick="backupData()" style="width:100%;padding:10px;background:#1E3A5F;border:1px solid #3B82F6;border-radius:8px;color:#3B82F6;font-size:13px;cursor:pointer;margin-bottom:8px">⬇ バックアップをダウンロード</button>
         <div style="font-size:11px;color:#64748B;margin-bottom:6px">復元：バックアップのJSONテキストを貼り付けてください</div>
@@ -622,6 +629,42 @@ async function pullFromServer(){
     if(data.serverTime) localStorage.setItem(SYNC_CURSOR_KEY, data.serverTime);
     return changed;
   }catch(e){ return false; }
+}
+
+async function forceResyncAll(btn){
+  const st=document.getElementById('resync-status');
+  if(btn) btn.disabled=true;
+  if(st){ st.style.display='block'; st.style.color='#94A3B8'; st.textContent=`送信中... (0/${records.length}件)`; }
+
+  records.forEach(r=>enqueueSync(r));
+
+  let sent=0, failed=0;
+  const q=getSyncQueue();
+  const remaining=[];
+  for(const payload of q){
+    const updatedAt=await pushPayloadToServer(payload);
+    if(updatedAt){
+      sent++;
+      const localRec=records.find(r=>r.id===payload.id);
+      if(localRec && !payload.deleted) localRec.updatedAt=updatedAt;
+    } else {
+      failed++;
+      remaining.push(payload);
+    }
+    if(st) st.textContent=`送信中... (${sent+failed}/${q.length}件)`;
+  }
+  setSyncQueue(remaining);
+  saveRecords();
+
+  if(st){
+    if(failed===0){
+      st.style.color='#10B981'; st.textContent=`✅ 全${sent}件を送信しました`;
+    } else {
+      st.style.color='#F59E0B'; st.textContent=`⚠️ ${sent}件送信、${failed}件失敗（オフラインの可能性。後で再試行してください）`;
+    }
+    setTimeout(()=>st.style.display='none', 5000);
+  }
+  if(btn) btn.disabled=false;
 }
 
 async function syncNow(){
