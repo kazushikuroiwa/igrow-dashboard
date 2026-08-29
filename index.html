@@ -18,9 +18,9 @@
 body { font-family:'Hiragino Sans','Noto Sans JP',sans-serif; background:#0F172A; color:#E2E8F0; min-height:100vh; }
 #header { background:linear-gradient(135deg,#1E293B 0%,#0F172A 100%); border-bottom:1px solid #1E3A5F; padding:14px 14px 0; }
 .header-top { display:flex; align-items:baseline; gap:10px; margin-bottom:2px; }
-.label-small { font-size:11px; letter-spacing:.15em; color:#94A3B8; text-transform:uppercase; }
-#save-status { font-size:12px; color:#10B981; }
-h1 { font-size:21px; font-weight:700; color:#F1F5F9; margin-bottom:10px; }
+.label-small { font-size:14px; letter-spacing:.15em; color:#B9C6DC; text-transform:uppercase; }
+#save-status { font-size:15px; color:#10B981; }
+h1 { font-size:23px; font-weight:700; color:#F1F5F9; margin-bottom:10px; }
 
 /* SIGNAL BAR */
 #signal-bar { display:none; border-radius:10px; padding:10px 13px; margin-bottom:10px; }
@@ -29,14 +29,14 @@ h1 { font-size:21px; font-weight:700; color:#F1F5F9; margin-bottom:10px; }
 #signal-bar.s-full  { background:rgba(127,29,29,.4);  border:1px solid #EF4444; }
 #signal-bar.s-ok    { background:rgba(20,83,45,.35);  border:1px solid #22C55E; }
 .sig-top { display:flex; align-items:center; gap:8px; margin-bottom:6px; }
-.sig-icon { font-size:18px; }
-.sig-title { font-size:15px; font-weight:700; color:#F1F5F9; }
-.sig-detail { font-size:12px; color:#CBD5E1; }
+.sig-icon { font-size:21px; }
+.sig-title { font-size:18px; font-weight:700; color:#F1F5F9; }
+.sig-detail { font-size:15px; color:#CBD5E1; }
 #signal-rows { display:flex; flex-direction:column; gap:3px; }
-.signal-row { display:flex; justify-content:space-between; align-items:center; background:rgba(15,23,42,.5); border-radius:5px; padding:5px 8px; font-size:13px; }
-.sr-label { color:#CBD5E1; font-size:13px; }
+.signal-row { display:flex; justify-content:space-between; align-items:center; background:rgba(15,23,42,.5); border-radius:5px; padding:5px 8px; font-size:16px; }
+.sr-label { color:#CBD5E1; font-size:16px; }
 .sr-right { display:flex; align-items:center; gap:5px; }
-.badge { font-size:11px; padding:1px 5px; border-radius:8px; font-weight:600; }
+.badge { font-size:14px; padding:1px 5px; border-radius:8px; font-weight:600; }
 .badge.watch { background:rgba(245,158,11,.2); color:#F59E0B; }
 .badge.buy   { background:rgba(249,115,22,.2); color:#F97316; }
 .badge.full  { background:rgba(239,68,68,.2);  color:#EF4444; }
@@ -44,31 +44,31 @@ h1 { font-size:21px; font-weight:700; color:#F1F5F9; margin-bottom:10px; }
 /* CARDS */
 #cards { display:grid; grid-template-columns:repeat(2,1fr); gap:7px; margin-bottom:10px; }
 .card { background:#1E293B; border-radius:8px; padding:9px 11px; border-left:3px solid; }
-.card-label { font-size:11px; color:#94A3B8; margin-bottom:2px; }
-.card-value { font-size:19px; font-weight:700; }
-.card-diff  { font-size:14px; font-weight:700; }
-.card-alloc { font-size:13px; margin-top:3px; color:#94A3B8; }
+.card-label { font-size:14px; color:#B9C6DC; margin-bottom:2px; }
+.card-value { font-size:22px; font-weight:700; }
+.card-diff  { font-size:17px; font-weight:700; }
+.card-alloc { font-size:16px; margin-top:3px; color:#B9C6DC; }
 .card-fund-signals { margin-top:4px; }
-.fund-sig-row { font-size:12px; display:flex; justify-content:space-between; }
+.fund-sig-row { font-size:15px; display:flex; justify-content:space-between; }
 .fund-sig-hit { color:#F59E0B; font-weight:700; }
 
 /* INFO BARS */
 .info-bar { display:none; background:#1E293B; border-radius:8px; padding:9px 13px; margin-bottom:8px; border:1px solid #1E3A5F; }
 .info-bar-row { display:flex; justify-content:space-between; align-items:center; }
-.info-bar-label { font-size:13px; color:#94A3B8; font-weight:600; }
-.info-bar-value { font-size:18px; font-weight:700; }
-.info-bar-sub   { font-size:14px; font-weight:600; }
+.info-bar-label { font-size:16px; color:#B9C6DC; font-weight:600; }
+.info-bar-value { font-size:21px; font-weight:700; }
+.info-bar-sub   { font-size:17px; font-weight:600; }
 
 /* TOTAL */
 #total-bar { text-align:center; padding:7px 0 13px; border-top:1px solid #1E3A5F; display:none; }
-#total-label { font-size:13px; color:#94A3B8; }
-#total-value { font-size:24px; font-weight:800; color:#F1F5F9; margin-left:8px; }
-#total-diff  { font-size:15px; font-weight:700; margin-left:5px; }
+#total-label { font-size:16px; color:#B9C6DC; }
+#total-value { font-size:26px; font-weight:800; color:#F1F5F9; margin-left:8px; }
+#total-diff  { font-size:18px; font-weight:700; margin-left:5px; }
 
 /* TABS */
 #tab-row { display:flex; justify-content:space-between; align-items:center; border-top:1px solid #1E3A5F; }
 #tabs { display:flex; flex-wrap:wrap; }
-.tab-btn { padding:9px 14px; border:none; background:none; cursor:pointer; color:#94A3B8; border-bottom:2px solid transparent; font-size:13px; }
+.tab-btn { padding:9px 14px; border:none; background:none; cursor:pointer; color:#B9C6DC; border-bottom:2px solid transparent; font-size:16px; }
 .tab-btn.active { color:#3B82F6; border-bottom:2px solid #3B82F6; font-weight:700; }
 
 /* CONTENT */
@@ -78,43 +78,43 @@ h1 { font-size:21px; font-weight:700; color:#F1F5F9; margin-bottom:10px; }
 
 /* CHART */
 #fund-toggles { display:flex; gap:6px; margin-bottom:12px; flex-wrap:wrap; }
-.fund-toggle { padding:3px 10px; border-radius:18px; border:1px solid; font-size:11px; cursor:pointer; background:transparent; }
-.period-btn { padding:5px 14px; border-radius:18px; border:1px solid #334155; font-size:12px; cursor:pointer; background:transparent; color:#64748B; }
+.fund-toggle { padding:3px 10px; border-radius:18px; border:1px solid; font-size:14px; cursor:pointer; background:transparent; }
+.period-btn { padding:5px 14px; border-radius:18px; border:1px solid #334155; font-size:15px; cursor:pointer; background:transparent; color:#93A3BD; }
 .active-period { background:#3B82F633; border-color:#3B82F6; color:#3B82F6; font-weight:700; }
 #chart-wrap { position:relative; height:250px; }
-#no-data-chart { text-align:center; color:#475569; padding-top:50px; font-size:13px; }
+#no-data-chart { text-align:center; color:#8394AF; padding-top:50px; font-size:16px; }
 
 /* TABLE */
 #table-wrap { overflow-x:auto; }
-table { width:100%; border-collapse:collapse; font-size:12px; }
-th { text-align:right; padding:7px 5px; font-weight:600; color:#94A3B8; border-bottom:1px solid #1E3A5F; }
+table { width:100%; border-collapse:collapse; font-size:15px; }
+th { text-align:right; padding:7px 5px; font-weight:600; color:#B9C6DC; border-bottom:1px solid #1E3A5F; }
 th:first-child { text-align:left; }
 td { padding:8px 4px; border-bottom:1px solid #1E293B; text-align:right; }
-td:first-child { text-align:left; color:#94A3B8; }
+td:first-child { text-align:left; color:#B9C6DC; }
 .td-total { color:#F1F5F9; font-weight:600; }
-.btn-edit { background:none; border:none; color:#3B82F6; cursor:pointer; font-size:13px; margin-right:3px; }
-.btn-del  { background:none; border:none; color:#EF4444; cursor:pointer; font-size:13px; }
+.btn-edit { background:none; border:none; color:#3B82F6; cursor:pointer; font-size:16px; margin-right:3px; }
+.btn-del  { background:none; border:none; color:#EF4444; cursor:pointer; font-size:16px; }
 
 /* INPUT */
 #input-panel { max-width:420px; }
 .field-group { margin-bottom:11px; }
-.field-group label { display:block; font-size:11px; margin-bottom:3px; }
+.field-group label { display:block; font-size:14px; margin-bottom:3px; }
 .field-row { display:flex; gap:6px; align-items:center; }
-.field-row input[type=number] { flex:1; background:#1E293B; border-radius:7px; color:#F1F5F9; padding:9px 10px; font-size:15px; border:1px solid; }
-.io-label { font-size:16px; font-weight:700; color:#94A3B8; white-space:nowrap; padding:0 2px; }
-.io-input { width:75px !important; font-size:15px !important; padding:8px 7px !important; border-color:#334155 !important; font-weight:600; }
-#date-input { width:100%; background:#1E293B; border:1px solid #334155; border-radius:7px; color:#F1F5F9; padding:9px 10px; font-size:15px; margin-bottom:14px; }
-.hint { margin-top:6px; padding:8px 10px; background:#1E293B; border-radius:7px; font-size:12px; color:#94A3B8; margin-bottom:13px; }
-.io-hint { font-size:10px; color:#475569; margin-top:4px; }
-#submit-btn { width:100%; padding:12px; background:linear-gradient(135deg,#3B82F6,#1D4ED8); border:none; border-radius:9px; color:white; font-size:14px; font-weight:700; cursor:pointer; }
-#cancel-btn { width:100%; padding:10px; background:none; border:1px solid #334155; border-radius:9px; color:#64748B; font-size:13px; cursor:pointer; margin-top:6px; display:none; }
-#memo-input { width:100%; background:#1E293B; border:1px solid #334155; border-radius:7px; color:#F1F5F9; padding:8px 10px; font-size:13px; margin-bottom:13px; }
+.field-row input[type=number] { flex:1; background:#1E293B; border-radius:7px; color:#F1F5F9; padding:9px 10px; font-size:18px; border:1px solid; }
+.io-label { font-size:19px; font-weight:700; color:#B9C6DC; white-space:nowrap; padding:0 2px; }
+.io-input { width:75px !important; font-size:18px !important; padding:8px 7px !important; border-color:#334155 !important; font-weight:600; }
+#date-input { width:100%; background:#1E293B; border:1px solid #334155; border-radius:7px; color:#F1F5F9; padding:9px 10px; font-size:18px; margin-bottom:14px; }
+.hint { margin-top:6px; padding:8px 10px; background:#1E293B; border-radius:7px; font-size:15px; color:#B9C6DC; margin-bottom:13px; }
+.io-hint { font-size:13px; color:#8394AF; margin-top:4px; }
+#submit-btn { width:100%; padding:12px; background:linear-gradient(135deg,#3B82F6,#1D4ED8); border:none; border-radius:9px; color:white; font-size:17px; font-weight:700; cursor:pointer; }
+#cancel-btn { width:100%; padding:10px; background:none; border:1px solid #334155; border-radius:9px; color:#93A3BD; font-size:16px; cursor:pointer; margin-top:6px; display:none; }
+#memo-input { width:100%; background:#1E293B; border:1px solid #334155; border-radius:7px; color:#F1F5F9; padding:8px 10px; font-size:16px; margin-bottom:13px; }
 
 /* SETTINGS PANEL */
 #settings-wrap { background:#1E293B; border-radius:10px; padding:14px; margin-bottom:14px; }
 .setting-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
-.setting-label { font-size:13px; color:#CBD5E1; }
-.setting-input { width:80px; background:#0F172A; border:1px solid #334155; border-radius:6px; color:#F1F5F9; padding:6px 8px; font-size:14px; text-align:center; }
+.setting-label { font-size:16px; color:#CBD5E1; }
+.setting-input { width:80px; background:#0F172A; border:1px solid #334155; border-radius:6px; color:#F1F5F9; padding:6px 8px; font-size:17px; text-align:center; }
 
 .up    { color:#F87171; }
 .down  { color:#60A5FA; }
@@ -125,20 +125,20 @@ td:first-child { text-align:left; color:#94A3B8; }
 .cycle-card { background:#1E293B; border-radius:10px; padding:12px 14px; border:1px solid #1E3A5F; }
 .cycle-card.open { border-color:#3B82F6; }
 .cycle-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
-.cycle-title { font-size:13px; font-weight:700; color:#F1F5F9; }
-.cycle-sub { font-size:10px; color:#64748B; margin-top:1px; }
-.cycle-status { font-size:11px; padding:3px 9px; border-radius:10px; font-weight:700; white-space:nowrap; }
+.cycle-title { font-size:16px; font-weight:700; color:#F1F5F9; }
+.cycle-sub { font-size:13px; color:#93A3BD; margin-top:1px; }
+.cycle-status { font-size:14px; padding:3px 9px; border-radius:10px; font-weight:700; white-space:nowrap; }
 .cycle-status.great { background:rgba(248,113,113,.18); color:#F87171; }
 .cycle-status.good  { background:rgba(52,211,153,.18); color:#34D399; }
 .cycle-status.soft  { background:rgba(96,165,250,.18); color:#60A5FA; }
 .cycle-status.bad   { background:rgba(239,68,68,.22); color:#EF4444; }
 .cycle-funds { display:grid; grid-template-columns:repeat(2,1fr); gap:6px; margin-bottom:8px; }
 .cycle-fund-row { display:flex; justify-content:space-between; align-items:center; background:#0F172A; border-radius:6px; padding:6px 8px; }
-.cycle-fund-name { font-size:11px; color:#94A3B8; }
-.cycle-fund-pct { font-size:13px; font-weight:700; }
-.cycle-meta { display:flex; justify-content:space-between; font-size:11px; color:#64748B; border-top:1px solid #0F172A; padding-top:7px; }
+.cycle-fund-name { font-size:14px; color:#B9C6DC; }
+.cycle-fund-pct { font-size:16px; font-weight:700; }
+.cycle-meta { display:flex; justify-content:space-between; font-size:14px; color:#93A3BD; border-top:1px solid #0F172A; padding-top:7px; }
 .cycle-meta b { color:#CBD5E1; }
-.cycle-volatility { margin-top:6px; font-size:11px; padding:6px 8px; background:rgba(245,158,11,.1); border:1px solid #F59E0B44; border-radius:6px; color:#FBBF24; }
+.cycle-volatility { margin-top:6px; font-size:14px; padding:6px 8px; background:rgba(245,158,11,.1); border:1px solid #F59E0B44; border-radius:6px; color:#FBBF24; }
 </style>
 </head>
 <body>
@@ -149,12 +149,14 @@ td:first-child { text-align:left; color:#94A3B8; }
   </div>
   <h1>投資信託デイリーチェック</h1>
 
-  <div id="signal-bar" onclick="openSignalSettings()" style="cursor:pointer">
-    <div class="sig-top">
+  <div id="signal-bar">
+    <div class="sig-top" onclick="toggleSignalDetail()" style="cursor:pointer">
       <span class="sig-icon" id="signal-icon"></span>
-      <div><div class="sig-title" id="signal-title"></div><div class="sig-detail" id="signal-detail"></div></div>
+      <div style="flex:1"><div class="sig-title" id="signal-title"></div></div>
+      <span id="sig-toggle-hint" style="font-size:14px;color:#CBD5E1;white-space:nowrap">タップで詳細 ▾</span>
+      <span onclick="event.stopPropagation();openSignalSettings()" style="font-size:18px;padding:2px 4px;cursor:pointer" title="閾値の設定">⚙️</span>
     </div>
-    <div id="signal-rows"></div>
+    <div id="signal-rows" style="display:none"></div>
   </div>
 
   <div id="cards"></div>
@@ -168,14 +170,14 @@ td:first-child { text-align:left; color:#94A3B8; }
 
   <div id="total-bar">
     <span id="total-label">合計（4銘柄）</span>
-    <span id="total-value" onclick="showTotalChart('monthly')" style="cursor:pointer;text-decoration:underline dotted #475569"></span>
-    <span id="total-diff"></span><span onclick="showTotalChart('monthly')" style="font-size:11px;color:#475569;margin-left:6px;cursor:pointer">📊</span>
+    <span id="total-value" onclick="showTotalChart('monthly')" style="cursor:pointer"></span>
+    <span id="total-diff"></span><span onclick="showTotalChart('monthly')" style="font-size:14px;color:#8394AF;margin-left:6px;cursor:pointer">📊</span>
   </div>
 
   <div id="weekly-bar" class="info-bar" title="タップで詳細">
     <div class="info-bar-row">
       <div class="info-bar-label" id="weekly-label"></div>
-      <div style="font-size:10px;color:#475569;margin-top:1px">💬 タップで詳細</div>
+      <div style="font-size:13px;color:#8394AF;margin-top:1px">💬 タップで詳細</div>
       <div><span class="info-bar-value" id="weekly-value"></span><span class="info-bar-sub" id="weekly-pct" style="margin-left:6px"></span></div>
     </div>
   </div>
@@ -183,7 +185,7 @@ td:first-child { text-align:left; color:#94A3B8; }
   <div id="monthly-bar" class="info-bar" onclick="showBarChart('monthly')" style="cursor:pointer" title="タップで月別推移グラフ">
     <div class="info-bar-row">
       <div class="info-bar-label" id="monthly-label"></div>
-      <div style="font-size:10px;color:#475569;margin-top:1px">📊 タップで棒グラフ</div>
+      <div style="font-size:13px;color:#8394AF;margin-top:1px">📊 タップで棒グラフ</div>
       <div><span class="info-bar-value" id="monthly-value"></span><span class="info-bar-sub" id="monthly-pct" style="margin-left:6px"></span></div>
     </div>
   </div>
@@ -191,7 +193,7 @@ td:first-child { text-align:left; color:#94A3B8; }
   <div id="yearly-bar" class="info-bar" onclick="showBarChart('yearly')" style="cursor:pointer" title="タップで年別推移グラフ">
     <div class="info-bar-row">
       <div class="info-bar-label" id="yearly-label"></div>
-      <div style="font-size:10px;color:#475569;margin-top:1px">📊 タップで推移グラフ</div>
+      <div style="font-size:13px;color:#8394AF;margin-top:1px">📊 タップで推移グラフ</div>
       <div>
         <span class="info-bar-value" id="yearly-value"></span>
         <span class="info-bar-sub" id="yearly-pct" style="margin-left:6px"></span>
@@ -209,7 +211,7 @@ td:first-child { text-align:left; color:#94A3B8; }
       <button class="tab-btn" onclick="switchTab('weekly')">💰週次</button>
       <button class="tab-btn" onclick="switchTab('settings')">⚙️</button>
     </div>
-    <button onclick="exportCSV()" style="margin-right:10px;padding:5px 10px;background:#1E293B;border:1px solid #334155;border-radius:7px;color:#64748B;font-size:10px;cursor:pointer">📋 データ</button>
+    <button onclick="exportCSV()" style="margin-right:10px;padding:5px 10px;background:#1E293B;border:1px solid #334155;border-radius:7px;color:#93A3BD;font-size:13px;cursor:pointer">📋 データ</button>
   </div>
 </div>
 
@@ -222,15 +224,15 @@ td:first-child { text-align:left; color:#94A3B8; }
     <button onclick="setPeriod(0)"   id="period-all" class="period-btn">全期間</button>
   </div>
   <div id="fund-toggles"></div>
-    <div id="no-data-chart"><div style="font-size:34px;margin-bottom:10px">📊</div>データを入力するとグラフが表示されます</div>
+    <div id="no-data-chart"><div style="font-size:36px;margin-bottom:10px">📊</div>データを入力するとグラフが表示されます</div>
     <div id="chart-wrap" style="display:none"><canvas id="myChart"></canvas></div>
   </div>
 
   <!-- Table -->
   <div id="panel-table" class="panel">
-    <input id="search-memo" placeholder="🔍 メモ検索" style="width:100%;margin-bottom:12px;background:#1E293B;border:1px solid #334155;border-radius:7px;color:#F1F5F9;padding:9px 11px;font-size:13px">
-    <div id="no-data-table" style="text-align:center;color:#475569;padding-top:50px;font-size:13px">
-      <div style="font-size:34px;margin-bottom:10px">📋</div>まだ記録がありません
+    <input id="search-memo" placeholder="🔍 メモ検索" style="width:100%;margin-bottom:12px;background:#1E293B;border:1px solid #334155;border-radius:7px;color:#F1F5F9;padding:9px 11px;font-size:16px">
+    <div id="no-data-table" style="text-align:center;color:#8394AF;padding-top:50px;font-size:16px">
+      <div style="font-size:36px;margin-bottom:10px">📋</div>まだ記録がありません
     </div>
     <div id="table-wrap" style="display:none">
       <table>
@@ -251,45 +253,45 @@ td:first-child { text-align:left; color:#94A3B8; }
   <!-- Input -->
   <div id="panel-input" class="panel active">
     <div id="input-panel">
-      <div style="font-size:10px;color:#64748B;margin-bottom:6px">日付</div>
+      <div style="font-size:13px;color:#93A3BD;margin-bottom:6px">日付</div>
       <input type="date" id="date-input">
 
-      <div style="font-size:10px;color:#64748B;margin-bottom:8px">評価額（万円）　　入金　　出金</div>
+      <div style="font-size:13px;color:#93A3BD;margin-bottom:8px">評価額（万円）　　入金　　出金</div>
 
       <div class="field-group">
         <label style="color:#3B82F6">S&amp;P500</label>
         <div class="field-row">
           <input type="text" inputmode="decimal" id="f-sp500" placeholder="ここに4行まとめてペースト可" style="border-color:#3B82F644">
-          <span class="io-label" style="color:#F87171;font-size:20px">+</span><input type="number" class="io-input" id="io-sp500-in" placeholder="0">
-          <span class="io-label" style="color:#60A5FA;font-size:20px">-</span><input type="number" class="io-input" id="io-sp500-out" placeholder="0">
+          <span class="io-label" style="color:#F87171;font-size:23px">+</span><input type="number" class="io-input" id="io-sp500-in" placeholder="0">
+          <span class="io-label" style="color:#60A5FA;font-size:23px">-</span><input type="number" class="io-input" id="io-sp500-out" placeholder="0">
         </div>
       </div>
       <div class="field-group">
         <label style="color:#F59E0B">FANG+</label>
         <div class="field-row">
           <input type="number" id="f-fang" placeholder="例: 495.4" style="border-color:#F59E0B44">
-          <span class="io-label" style="color:#F87171;font-size:20px">+</span><input type="number" class="io-input" id="io-fang-in" placeholder="0">
-          <span class="io-label" style="color:#60A5FA;font-size:20px">-</span><input type="number" class="io-input" id="io-fang-out" placeholder="0">
+          <span class="io-label" style="color:#F87171;font-size:23px">+</span><input type="number" class="io-input" id="io-fang-in" placeholder="0">
+          <span class="io-label" style="color:#60A5FA;font-size:23px">-</span><input type="number" class="io-input" id="io-fang-out" placeholder="0">
         </div>
       </div>
       <div class="field-group">
         <label style="color:#10B981">米国モメンタム</label>
         <div class="field-row">
           <input type="number" id="f-us" placeholder="例: 142.6" style="border-color:#10B98144">
-          <span class="io-label" style="color:#F87171;font-size:20px">+</span><input type="number" class="io-input" id="io-us-in" placeholder="0">
-          <span class="io-label" style="color:#60A5FA;font-size:20px">-</span><input type="number" class="io-input" id="io-us-out" placeholder="0">
+          <span class="io-label" style="color:#F87171;font-size:23px">+</span><input type="number" class="io-input" id="io-us-in" placeholder="0">
+          <span class="io-label" style="color:#60A5FA;font-size:23px">-</span><input type="number" class="io-input" id="io-us-out" placeholder="0">
         </div>
       </div>
       <div class="field-group">
         <label style="color:#EF4444">日本モメンタム</label>
         <div class="field-row">
           <input type="number" id="f-jp" placeholder="例: 153.4" style="border-color:#EF444444">
-          <span class="io-label" style="color:#F87171;font-size:20px">+</span><input type="number" class="io-input" id="io-jp-in" placeholder="0">
-          <span class="io-label" style="color:#60A5FA;font-size:20px">-</span><input type="number" class="io-input" id="io-jp-out" placeholder="0">
+          <span class="io-label" style="color:#F87171;font-size:23px">+</span><input type="number" class="io-input" id="io-jp-in" placeholder="0">
+          <span class="io-label" style="color:#60A5FA;font-size:23px">-</span><input type="number" class="io-input" id="io-jp-out" placeholder="0">
         </div>
       </div>
 
-      <div style="font-size:10px;color:#64748B;margin-bottom:4px">メモ（任意）</div>
+      <div style="font-size:13px;color:#93A3BD;margin-bottom:4px">メモ（任意）</div>
       <input type="text" id="memo-input" placeholder="例: S&P500に10万追加">
 
       <div class="hint">💡 S&amp;P500欄にコードブロックを丸ごとペーストすると4つ自動入力されます<br>入出金がない日は空欄でOKです</div>
@@ -301,32 +303,32 @@ td:first-child { text-align:left; color:#94A3B8; }
 
   <!-- Pie Chart -->
   <div id="panel-pie" class="panel">
-    <div style="font-size:13px;font-weight:700;color:#F1F5F9;margin-bottom:14px">構成比率</div>
+    <div style="font-size:16px;font-weight:700;color:#F1F5F9;margin-bottom:14px">構成比率</div>
     <div style="position:relative;height:260px;max-width:300px;margin:0 auto">
       <canvas id="pieChart"></canvas>
     </div>
     <div id="pie-legend" style="margin-top:16px;display:flex;flex-direction:column;gap:8px"></div>
-    <div id="no-data-pie" style="text-align:center;color:#475569;padding-top:50px;font-size:13px">
-      <div style="font-size:34px;margin-bottom:10px">🥧</div>データを入力すると円グラフが表示されます
+    <div id="no-data-pie" style="text-align:center;color:#8394AF;padding-top:50px;font-size:16px">
+      <div style="font-size:36px;margin-bottom:10px">🥧</div>データを入力すると円グラフが表示されます
     </div>
   </div>
 
   <!-- Cycle (momentum reconstitution) -->
   <div id="panel-cycle" class="panel">
-    <div style="font-size:13px;font-weight:700;color:#F1F5F9;margin-bottom:4px">🔁 モメンタム銘柄入れ替えサイクル</div>
-    <div style="font-size:11px;color:#64748B;margin-bottom:14px">SMTトレンドランキング（米国・日本モメンタム）は毎年2/5/8/11月末に銘柄入替＆等金額リバランスを実施します。区切りごとの騰落を表示します。</div>
-    <div id="no-data-cycle" style="text-align:center;color:#475569;padding-top:50px;font-size:13px">
-      <div style="font-size:34px;margin-bottom:10px">🔁</div>データを入力するとサイクル別成績が表示されます
+    <div style="font-size:16px;font-weight:700;color:#F1F5F9;margin-bottom:4px">🔁 モメンタム銘柄入れ替えサイクル</div>
+    <div style="font-size:14px;color:#93A3BD;margin-bottom:14px">SMTトレンドランキング（米国・日本モメンタム）は毎年2/5/8/11月末に銘柄入替＆等金額リバランスを実施します。区切りごとの騰落を表示します。</div>
+    <div id="no-data-cycle" style="text-align:center;color:#8394AF;padding-top:50px;font-size:16px">
+      <div style="font-size:36px;margin-bottom:10px">🔁</div>データを入力するとサイクル別成績が表示されます
     </div>
     <div id="cycle-list"></div>
   </div>
 
   <!-- Weekly cash-skim check -->
   <div id="panel-weekly" class="panel">
-    <div style="font-size:13px;font-weight:700;color:#F1F5F9;margin-bottom:4px">💰 週次現金化チェック</div>
-    <div style="font-size:11px;color:#64748B;margin-bottom:14px">週内に合計資産がATH更新し、かつ前週金曜より今週金曜が高ければ発動。累計含み益（入出金調整済）が一番大きいファンドから、設定した割合を現金化提案します。</div>
-    <div id="no-data-weekly" style="text-align:center;color:#475569;padding-top:50px;font-size:13px">
-      <div style="font-size:34px;margin-bottom:10px">💰</div>データを入力すると週次チェックが表示されます
+    <div style="font-size:16px;font-weight:700;color:#F1F5F9;margin-bottom:4px">💰 週次現金化チェック</div>
+    <div style="font-size:14px;color:#93A3BD;margin-bottom:14px">週内に合計資産がATH更新し、かつ前週金曜より今週金曜が高ければ発動。累計含み益（入出金調整済）が一番大きいファンドから、設定した割合を現金化提案します。</div>
+    <div id="no-data-weekly" style="text-align:center;color:#8394AF;padding-top:50px;font-size:16px">
+      <div style="font-size:36px;margin-bottom:10px">💰</div>データを入力すると週次チェックが表示されます
     </div>
     <div id="weekly-content"></div>
   </div>
@@ -334,52 +336,52 @@ td:first-child { text-align:left; color:#94A3B8; }
   <!-- Settings -->
   <div id="panel-settings" class="panel">
     <div id="settings-wrap">
-      <div style="font-size:13px;font-weight:700;color:#F1F5F9;margin-bottom:14px">⚙️ 設定</div>
+      <div style="font-size:16px;font-weight:700;color:#F1F5F9;margin-bottom:14px">⚙️ 設定</div>
       <div class="setting-row">
         <div>
           <div class="setting-label">FANG+警告閾値（%以上で警告）</div>
-          <div style="font-size:10px;color:#475569">資産配分でFANG+がこの値を超えると警告表示</div>
+          <div style="font-size:13px;color:#8394AF">資産配分でFANG+がこの値を超えると警告表示</div>
         </div>
         <input type="number" class="setting-input" id="fang-threshold" value="50" min="1" max="100">
       </div>
       <div class="setting-row">
         <div>
           <div class="setting-label">🔁 絶好調ライン（%以上）</div>
-          <div style="font-size:10px;color:#475569">サイクル内モメンタム平均騰落率がこれ以上で「絶好調」</div>
+          <div style="font-size:13px;color:#8394AF">サイクル内モメンタム平均騰落率がこれ以上で「絶好調」</div>
         </div>
         <input type="number" class="setting-input" id="cycle-great-threshold" value="8" min="0" max="100">
       </div>
       <div class="setting-row">
         <div>
           <div class="setting-label">🔁 急落ライン（%以下）</div>
-          <div style="font-size:10px;color:#475569">サイクル内モメンタム平均騰落率がこれ以下で「急落」</div>
+          <div style="font-size:13px;color:#8394AF">サイクル内モメンタム平均騰落率がこれ以下で「急落」</div>
         </div>
         <input type="number" class="setting-input" id="cycle-bad-threshold" value="-8" max="0" min="-100">
       </div>
       <div class="setting-row">
         <div>
           <div class="setting-label">💰 週次現金化率（%）</div>
-          <div style="font-size:10px;color:#475569">累計トップファンドの含み益（入出金調整済）からこの割合を毎週現金化提案</div>
+          <div style="font-size:13px;color:#8394AF">累計トップファンドの含み益（入出金調整済）からこの割合を毎週現金化提案</div>
         </div>
         <input type="number" class="setting-input" id="weekly-skim-pct" value="10" min="0" max="100" step="0.5">
       </div>
-      <button onclick="saveSettings()" style="width:100%;padding:10px;background:#3B82F6;border:none;border-radius:8px;color:white;font-size:13px;cursor:pointer;margin-top:6px">保存する</button>
-      <div id="settings-saved" style="text-align:center;font-size:11px;color:#10B981;margin-top:6px;display:none">保存しました ✓</div>
+      <button onclick="saveSettings()" style="width:100%;padding:10px;background:#3B82F6;border:none;border-radius:8px;color:white;font-size:16px;cursor:pointer;margin-top:6px">保存する</button>
+      <div id="settings-saved" style="text-align:center;font-size:14px;color:#10B981;margin-top:6px;display:none">保存しました ✓</div>
 
       <div style="margin-top:18px;border-top:1px solid #334155;padding-top:14px">
-        <div style="font-size:12px;font-weight:700;color:#F1F5F9;margin-bottom:10px">☁️ サーバー同期</div>
-        <button onclick="forceResyncAll(this)" style="width:100%;padding:10px;background:#1E3A5F;border:1px solid #10B981;border-radius:8px;color:#10B981;font-size:13px;cursor:pointer;margin-bottom:6px">🔄 全記録をサーバーへ再送信</button>
-        <div style="font-size:10px;color:#64748B">今この端末にある全ての記録を、サーバーが持っていなくても・古くても、強制的に上書き送信します。「サーバーに反映されていない記録がある」と思った時に使ってください。</div>
-        <div id="resync-status" style="text-align:center;font-size:11px;margin-top:6px;display:none"></div>
+        <div style="font-size:15px;font-weight:700;color:#F1F5F9;margin-bottom:10px">☁️ サーバー同期</div>
+        <button onclick="forceResyncAll(this)" style="width:100%;padding:10px;background:#1E3A5F;border:1px solid #10B981;border-radius:8px;color:#10B981;font-size:16px;cursor:pointer;margin-bottom:6px">🔄 全記録をサーバーへ再送信</button>
+        <div style="font-size:13px;color:#93A3BD">今この端末にある全ての記録を、サーバーが持っていなくても・古くても、強制的に上書き送信します。「サーバーに反映されていない記録がある」と思った時に使ってください。</div>
+        <div id="resync-status" style="text-align:center;font-size:14px;margin-top:6px;display:none"></div>
       </div>
 
       <div style="margin-top:18px;border-top:1px solid #334155;padding-top:14px">
-        <div style="font-size:12px;font-weight:700;color:#F1F5F9;margin-bottom:10px">💾 バックアップ／復元</div>
-        <button onclick="backupData()" style="width:100%;padding:10px;background:#1E3A5F;border:1px solid #3B82F6;border-radius:8px;color:#3B82F6;font-size:13px;cursor:pointer;margin-bottom:8px">⬇ バックアップをダウンロード</button>
-        <div style="font-size:11px;color:#64748B;margin-bottom:6px">復元：バックアップのJSONテキストを貼り付けてください</div>
-        <textarea id="restore-input" placeholder="バックアップデータをここに貼り付け..." style="width:100%;height:120px;background:#0F172A;border:1px solid #334155;border-radius:7px;color:#E2E8F0;padding:9px;font-size:11px;font-family:monospace;box-sizing:border-box;margin-bottom:8px"></textarea>
-        <button onclick="restoreData()" style="width:100%;padding:10px;background:#1E3A5F;border:1px solid #10B981;border-radius:8px;color:#10B981;font-size:13px;cursor:pointer;font-weight:700">✅ 復元する</button>
-        <div id="restore-status" style="text-align:center;font-size:11px;margin-top:6px;display:none"></div>
+        <div style="font-size:15px;font-weight:700;color:#F1F5F9;margin-bottom:10px">💾 バックアップ／復元</div>
+        <button onclick="backupData()" style="width:100%;padding:10px;background:#1E3A5F;border:1px solid #3B82F6;border-radius:8px;color:#3B82F6;font-size:16px;cursor:pointer;margin-bottom:8px">⬇ バックアップをダウンロード</button>
+        <div style="font-size:14px;color:#93A3BD;margin-bottom:6px">復元：バックアップのJSONテキストを貼り付けてください</div>
+        <textarea id="restore-input" placeholder="バックアップデータをここに貼り付け..." style="width:100%;height:120px;background:#0F172A;border:1px solid #334155;border-radius:7px;color:#E2E8F0;padding:9px;font-size:14px;font-family:monospace;box-sizing:border-box;margin-bottom:8px"></textarea>
+        <button onclick="restoreData()" style="width:100%;padding:10px;background:#1E3A5F;border:1px solid #10B981;border-radius:8px;color:#10B981;font-size:16px;cursor:pointer;font-weight:700">✅ 復元する</button>
+        <div id="restore-status" style="text-align:center;font-size:14px;margin-top:6px;display:none"></div>
       </div>
     </div>
   </div>
@@ -389,15 +391,15 @@ td:first-child { text-align:left; color:#94A3B8; }
 <div id="bar-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:9999;padding:14px;box-sizing:border-box;overflow-y:auto">
   <div style="background:#1E293B;border-radius:12px;padding:16px;max-width:500px;margin:0 auto">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-      <div id="bar-modal-title" style="font-size:15px;font-weight:700;color:#F1F5F9"></div>
+      <div id="bar-modal-title" style="font-size:18px;font-weight:700;color:#F1F5F9"></div>
       <div style="display:flex;background:#0F172A;border-radius:8px;padding:3px;gap:3px">
-        <button onclick="showBarChart('monthly')" id="bar-btn-monthly" style="padding:6px 16px;border-radius:6px;border:none;background:#3B82F6;color:white;font-size:12px;font-weight:700;cursor:pointer">月次</button>
-        <button onclick="showBarChart('yearly')" id="bar-btn-yearly" style="padding:6px 16px;border-radius:6px;border:none;background:transparent;color:#64748B;font-size:12px;cursor:pointer">年次</button>
+        <button onclick="showBarChart('monthly')" id="bar-btn-monthly" style="padding:6px 16px;border-radius:6px;border:none;background:#3B82F6;color:white;font-size:15px;font-weight:700;cursor:pointer">月次</button>
+        <button onclick="showBarChart('yearly')" id="bar-btn-yearly" style="padding:6px 16px;border-radius:6px;border:none;background:transparent;color:#93A3BD;font-size:15px;cursor:pointer">年次</button>
       </div>
     </div>
     <div style="position:relative;height:280px"><canvas id="barChart"></canvas></div>
     <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:6px" id="bar-legend"></div>
-    <button onclick="document.getElementById('bar-modal').style.display='none'" style="width:100%;margin-top:12px;padding:10px;background:#334155;border:none;border-radius:7px;color:#E2E8F0;font-size:13px;cursor:pointer">閉じる</button>
+    <button onclick="document.getElementById('bar-modal').style.display='none'" style="width:100%;margin-top:12px;padding:10px;background:#334155;border:none;border-radius:7px;color:#E2E8F0;font-size:16px;cursor:pointer">閉じる</button>
   </div>
 </div>
 
@@ -405,39 +407,39 @@ td:first-child { text-align:left; color:#94A3B8; }
 <div id="total-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:9999;padding:14px;box-sizing:border-box;overflow-y:auto">
   <div style="background:#1E293B;border-radius:12px;padding:16px;max-width:500px;margin:0 auto">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-      <div style="font-size:15px;font-weight:700;color:#F1F5F9">資産総合計の推移</div>
+      <div style="font-size:18px;font-weight:700;color:#F1F5F9">資産総合計の推移</div>
       <div style="display:flex;background:#0F172A;border-radius:8px;padding:3px;gap:3px">
-        <button onclick="showTotalChart('daily')" id="total-btn-daily" style="padding:6px 12px;border-radius:6px;border:none;background:transparent;color:#64748B;font-size:12px;cursor:pointer">日次</button>
-        <button onclick="showTotalChart('monthly')" id="total-btn-monthly" style="padding:6px 12px;border-radius:6px;border:none;background:#3B82F6;color:white;font-size:12px;font-weight:700;cursor:pointer">月次</button>
-        <button onclick="showTotalChart('yearly')" id="total-btn-yearly" style="padding:6px 12px;border-radius:6px;border:none;background:transparent;color:#64748B;font-size:12px;cursor:pointer">年次</button>
+        <button onclick="showTotalChart('daily')" id="total-btn-daily" style="padding:6px 12px;border-radius:6px;border:none;background:transparent;color:#93A3BD;font-size:15px;cursor:pointer">日次</button>
+        <button onclick="showTotalChart('monthly')" id="total-btn-monthly" style="padding:6px 12px;border-radius:6px;border:none;background:#3B82F6;color:white;font-size:15px;font-weight:700;cursor:pointer">月次</button>
+        <button onclick="showTotalChart('yearly')" id="total-btn-yearly" style="padding:6px 12px;border-radius:6px;border:none;background:transparent;color:#93A3BD;font-size:15px;cursor:pointer">年次</button>
       </div>
     </div>
-    <div id="total-chart-subtitle" style="font-size:11px;color:#64748B;margin-bottom:10px"></div>
+    <div id="total-chart-subtitle" style="font-size:14px;color:#93A3BD;margin-bottom:10px"></div>
     <div style="position:relative;height:300px"><canvas id="totalBarChart"></canvas></div>
-    <div class="total-hint" style="margin-top:10px;font-size:11px;color:#475569">※棒グラフをタップすると内訳が表示されます</div>
-    <button onclick="document.getElementById('total-modal').style.display='none'" style="width:100%;margin-top:12px;padding:11px;background:#334155;border:none;border-radius:7px;color:#E2E8F0;font-size:13px;cursor:pointer">閉じる</button>
+    <div class="total-hint" style="margin-top:10px;font-size:14px;color:#8394AF">※棒グラフをタップすると内訳が表示されます</div>
+    <button onclick="document.getElementById('total-modal').style.display='none'" style="width:100%;margin-top:12px;padding:11px;background:#334155;border:none;border-radius:7px;color:#E2E8F0;font-size:16px;cursor:pointer">閉じる</button>
   </div>
 </div>
 
 <!-- シグナル設定モーダル -->
 <div id="signal-settings-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:9999;padding:14px;box-sizing:border-box;overflow-y:auto">
   <div style="background:#1E293B;border-radius:12px;padding:18px;max-width:400px;margin:0 auto;margin-top:10vh">
-    <div style="font-size:15px;font-weight:700;color:#F1F5F9;margin-bottom:4px">📊 シグナル状況と設定</div>
-    <div style="font-size:11px;color:#64748B;margin-bottom:10px">現在の相場状態（タップで詳細説明）</div>
+    <div style="font-size:18px;font-weight:700;color:#F1F5F9;margin-bottom:4px">📊 シグナル状況と設定</div>
+    <div style="font-size:14px;color:#93A3BD;margin-bottom:10px">現在の相場状態（タップで詳細説明）</div>
     <div id="signal-explain-text" style="margin-bottom:14px"></div>
-    <div style="font-size:11px;color:#3B82F6;font-weight:700;margin-bottom:8px">── 閾値の設定 ──</div>
+    <div style="font-size:14px;color:#3B82F6;font-weight:700;margin-bottom:8px">── 閾値の設定 ──</div>
 
     <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
       <div style="background:#0F172A;border-radius:8px;padding:12px;border-left:3px solid #F59E0B">
         <div style="display:flex;justify-content:space-between;align-items:center">
           <div>
-            <div style="font-size:13px;color:#F59E0B;font-weight:700">🟡 警戒シグナル</div>
-            <div style="font-size:11px;color:#64748B;margin-top:2px">5営業日の下落率</div>
+            <div style="font-size:16px;color:#F59E0B;font-weight:700">🟡 警戒シグナル</div>
+            <div style="font-size:14px;color:#93A3BD;margin-top:2px">5営業日の下落率</div>
           </div>
           <div style="display:flex;align-items:center;gap:4px">
-            <span style="font-size:13px;color:#94A3B8">-</span>
-            <input type="number" id="sig-watch" min="1" max="50" style="width:60px;background:#1E293B;border:1px solid #F59E0B44;border-radius:6px;color:#F1F5F9;padding:6px 8px;font-size:14px;text-align:center">
-            <span style="font-size:13px;color:#94A3B8">%</span>
+            <span style="font-size:16px;color:#B9C6DC">-</span>
+            <input type="number" id="sig-watch" min="1" max="50" style="width:60px;background:#1E293B;border:1px solid #F59E0B44;border-radius:6px;color:#F1F5F9;padding:6px 8px;font-size:17px;text-align:center">
+            <span style="font-size:16px;color:#B9C6DC">%</span>
           </div>
         </div>
       </div>
@@ -445,13 +447,13 @@ td:first-child { text-align:left; color:#94A3B8; }
       <div style="background:#0F172A;border-radius:8px;padding:12px;border-left:3px solid #F97316">
         <div style="display:flex;justify-content:space-between;align-items:center">
           <div>
-            <div style="font-size:13px;color:#F97316;font-weight:700">🟠 買い増しシグナル</div>
-            <div style="font-size:11px;color:#64748B;margin-top:2px">10営業日の下落率</div>
+            <div style="font-size:16px;color:#F97316;font-weight:700">🟠 買い増しシグナル</div>
+            <div style="font-size:14px;color:#93A3BD;margin-top:2px">10営業日の下落率</div>
           </div>
           <div style="display:flex;align-items:center;gap:4px">
-            <span style="font-size:13px;color:#94A3B8">-</span>
-            <input type="number" id="sig-buy" min="1" max="50" style="width:60px;background:#1E293B;border:1px solid #F9741644;border-radius:6px;color:#F1F5F9;padding:6px 8px;font-size:14px;text-align:center">
-            <span style="font-size:13px;color:#94A3B8">%</span>
+            <span style="font-size:16px;color:#B9C6DC">-</span>
+            <input type="number" id="sig-buy" min="1" max="50" style="width:60px;background:#1E293B;border:1px solid #F9741644;border-radius:6px;color:#F1F5F9;padding:6px 8px;font-size:17px;text-align:center">
+            <span style="font-size:16px;color:#B9C6DC">%</span>
           </div>
         </div>
       </div>
@@ -459,22 +461,22 @@ td:first-child { text-align:left; color:#94A3B8; }
       <div style="background:#0F172A;border-radius:8px;padding:12px;border-left:3px solid #EF4444">
         <div style="display:flex;justify-content:space-between;align-items:center">
           <div>
-            <div style="font-size:13px;color:#EF4444;font-weight:700">🔴 全力追加シグナル</div>
-            <div style="font-size:11px;color:#64748B;margin-top:2px">20営業日の下落率</div>
+            <div style="font-size:16px;color:#EF4444;font-weight:700">🔴 全力追加シグナル</div>
+            <div style="font-size:14px;color:#93A3BD;margin-top:2px">20営業日の下落率</div>
           </div>
           <div style="display:flex;align-items:center;gap:4px">
-            <span style="font-size:13px;color:#94A3B8">-</span>
-            <input type="number" id="sig-full" min="1" max="50" style="width:60px;background:#1E293B;border:1px solid #EF444444;border-radius:6px;color:#F1F5F9;padding:6px 8px;font-size:14px;text-align:center">
-            <span style="font-size:13px;color:#94A3B8">%</span>
+            <span style="font-size:16px;color:#B9C6DC">-</span>
+            <input type="number" id="sig-full" min="1" max="50" style="width:60px;background:#1E293B;border:1px solid #EF444444;border-radius:6px;color:#F1F5F9;padding:6px 8px;font-size:17px;text-align:center">
+            <span style="font-size:16px;color:#B9C6DC">%</span>
           </div>
         </div>
       </div>
     </div>
 
-    <div id="signal-settings-saved" style="text-align:center;font-size:12px;color:#10B981;margin-bottom:8px;display:none">✅ 保存しました</div>
+    <div id="signal-settings-saved" style="text-align:center;font-size:15px;color:#10B981;margin-bottom:8px;display:none">✅ 保存しました</div>
     <div style="display:flex;gap:8px">
-      <button onclick="document.getElementById('signal-settings-modal').style.display='none'" style="flex:1;padding:11px;background:#334155;border:none;border-radius:8px;color:#E2E8F0;font-size:13px;cursor:pointer">閉じる</button>
-      <button onclick="saveSignalSettings()" style="flex:1;padding:11px;background:#3B82F6;border:none;border-radius:8px;color:white;font-size:13px;font-weight:700;cursor:pointer">保存する</button>
+      <button onclick="document.getElementById('signal-settings-modal').style.display='none'" style="flex:1;padding:11px;background:#334155;border:none;border-radius:8px;color:#E2E8F0;font-size:16px;cursor:pointer">閉じる</button>
+      <button onclick="saveSignalSettings()" style="flex:1;padding:11px;background:#3B82F6;border:none;border-radius:8px;color:white;font-size:16px;font-weight:700;cursor:pointer">保存する</button>
     </div>
   </div>
 </div>
@@ -482,13 +484,13 @@ td:first-child { text-align:left; color:#94A3B8; }
 <!-- 入力確認モーダル -->
 <div id="input-confirm-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.88);z-index:10000;padding:14px;box-sizing:border-box;overflow-y:auto">
   <div style="background:#1E293B;border-radius:14px;padding:18px;max-width:420px;margin:0 auto;margin-top:8vh">
-    <div style="font-size:15px;font-weight:800;color:#F59E0B;margin-bottom:6px">⚠️ 入力値の確認</div>
-    <div style="font-size:12px;color:#94A3B8;margin-bottom:14px">以下の銘柄が前回より15%以上変動しています。<br>入出金がある場合は問題ありませんが、誤入力の可能性もあります。</div>
+    <div style="font-size:18px;font-weight:800;color:#F59E0B;margin-bottom:6px">⚠️ 入力値の確認</div>
+    <div style="font-size:15px;color:#B9C6DC;margin-bottom:14px">以下の銘柄が前回より15%以上変動しています。<br>入出金がある場合は問題ありませんが、誤入力の可能性もあります。</div>
     <div id="confirm-items" style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px"></div>
-    <div style="font-size:12px;color:#64748B;margin-bottom:14px">このまま記録しますか？</div>
+    <div style="font-size:15px;color:#93A3BD;margin-bottom:14px">このまま記録しますか？</div>
     <div style="display:flex;gap:8px">
-      <button onclick="closeInputConfirm()" style="flex:1;padding:12px;background:#334155;border:none;border-radius:9px;color:#E2E8F0;font-size:13px;cursor:pointer">✏️ 修正する</button>
-      <button onclick="forceSubmit()" style="flex:1;padding:12px;background:#F59E0B;border:none;border-radius:9px;color:#000;font-size:13px;font-weight:800;cursor:pointer">✅ このまま記録</button>
+      <button onclick="closeInputConfirm()" style="flex:1;padding:12px;background:#334155;border:none;border-radius:9px;color:#E2E8F0;font-size:16px;cursor:pointer">✏️ 修正する</button>
+      <button onclick="forceSubmit()" style="flex:1;padding:12px;background:#F59E0B;border:none;border-radius:9px;color:#000;font-size:16px;font-weight:800;cursor:pointer">✅ このまま記録</button>
     </div>
   </div>
 </div>
@@ -496,15 +498,15 @@ td:first-child { text-align:left; color:#94A3B8; }
 <!-- 削除確認モーダル -->
 <div id="delete-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:9999;padding:14px;box-sizing:border-box;display:none;align-items:center;justify-content:center">
   <div style="background:#1E293B;border-radius:12px;padding:20px;max-width:340px;width:100%;margin:auto;margin-top:30vh">
-    <div style="font-size:15px;font-weight:700;color:#F1F5F9;margin-bottom:8px">🗑️ 記録を削除しますか？</div>
+    <div style="font-size:18px;font-weight:700;color:#F1F5F9;margin-bottom:8px">🗑️ 記録を削除しますか？</div>
     <div style="background:#0F172A;border-radius:8px;padding:10px;margin-bottom:16px">
-      <div style="font-size:13px;color:#94A3B8">日付：<span id="delete-date" style="color:#F1F5F9;font-weight:700"></span></div>
-      <div style="font-size:13px;color:#94A3B8;margin-top:4px">合計：<span id="delete-total" style="color:#EF4444;font-weight:700"></span></div>
+      <div style="font-size:16px;color:#B9C6DC">日付：<span id="delete-date" style="color:#F1F5F9;font-weight:700"></span></div>
+      <div style="font-size:16px;color:#B9C6DC;margin-top:4px">合計：<span id="delete-total" style="color:#EF4444;font-weight:700"></span></div>
     </div>
-    <div style="font-size:12px;color:#64748B;margin-bottom:14px">この操作は元に戻せません</div>
+    <div style="font-size:15px;color:#93A3BD;margin-bottom:14px">この操作は元に戻せません</div>
     <div style="display:flex;gap:8px">
-      <button onclick="document.getElementById('delete-modal').style.display='none'" style="flex:1;padding:11px;background:#334155;border:none;border-radius:8px;color:#E2E8F0;font-size:13px;cursor:pointer">キャンセル</button>
-      <button onclick="confirmDelete()" style="flex:1;padding:11px;background:#EF4444;border:none;border-radius:8px;color:white;font-size:13px;font-weight:700;cursor:pointer">削除する</button>
+      <button onclick="document.getElementById('delete-modal').style.display='none'" style="flex:1;padding:11px;background:#334155;border:none;border-radius:8px;color:#E2E8F0;font-size:16px;cursor:pointer">キャンセル</button>
+      <button onclick="confirmDelete()" style="flex:1;padding:11px;background:#EF4444;border:none;border-radius:8px;color:white;font-size:16px;font-weight:700;cursor:pointer">削除する</button>
     </div>
   </div>
 </div>
@@ -512,22 +514,22 @@ td:first-child { text-align:left; color:#94A3B8; }
 <!-- バックアップモーダル -->
 <div id="backup-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:9999;padding:14px;box-sizing:border-box;overflow-y:auto">
   <div style="background:#1E293B;border-radius:12px;padding:16px;max-width:500px;margin:0 auto">
-    <div style="font-size:13px;font-weight:700;color:#F1F5F9;margin-bottom:8px">💾 バックアップデータ</div>
-    <div style="font-size:11px;color:#64748B;margin-bottom:10px">下のテキストを全選択→コピーして、メモアプリやGoogleドライブに保存してください</div>
-    <textarea id="backup-output" readonly style="width:100%;height:260px;background:#0F172A;color:#E2E8F0;border:1px solid #334155;border-radius:7px;padding:9px;font-size:10px;font-family:monospace;box-sizing:border-box"></textarea>
-    <button onclick="selectBackup()" style="width:100%;margin-top:8px;padding:10px;background:#3B82F6;border:none;border-radius:7px;color:white;font-size:13px;cursor:pointer;font-weight:700">全選択（長押しでコピー）</button>
-    <button onclick="document.getElementById('backup-modal').style.display='none'" style="width:100%;margin-top:6px;padding:10px;background:#334155;border:none;border-radius:7px;color:#E2E8F0;font-size:13px;cursor:pointer">閉じる</button>
+    <div style="font-size:16px;font-weight:700;color:#F1F5F9;margin-bottom:8px">💾 バックアップデータ</div>
+    <div style="font-size:14px;color:#93A3BD;margin-bottom:10px">下のテキストを全選択→コピーして、メモアプリやGoogleドライブに保存してください</div>
+    <textarea id="backup-output" readonly style="width:100%;height:260px;background:#0F172A;color:#E2E8F0;border:1px solid #334155;border-radius:7px;padding:9px;font-size:13px;font-family:monospace;box-sizing:border-box"></textarea>
+    <button onclick="selectBackup()" style="width:100%;margin-top:8px;padding:10px;background:#3B82F6;border:none;border-radius:7px;color:white;font-size:16px;cursor:pointer;font-weight:700">全選択（長押しでコピー）</button>
+    <button onclick="document.getElementById('backup-modal').style.display='none'" style="width:100%;margin-top:6px;padding:10px;background:#334155;border:none;border-radius:7px;color:#E2E8F0;font-size:16px;cursor:pointer">閉じる</button>
   </div>
 </div>
 
 <!-- データ表示モーダル -->
 <div id="data-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:9999;padding:14px;box-sizing:border-box;overflow-y:auto">
   <div style="background:#1E293B;border-radius:12px;padding:16px;max-width:500px;margin:0 auto">
-    <div style="font-size:13px;font-weight:700;color:#F1F5F9;margin-bottom:11px">📋 月別データ表示</div>
+    <div style="font-size:16px;font-weight:700;color:#F1F5F9;margin-bottom:11px">📋 月別データ表示</div>
     <div id="month-buttons" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:11px"></div>
-    <textarea id="data-output" readonly style="width:100%;height:230px;background:#0F172A;color:#E2E8F0;border:1px solid #334155;border-radius:7px;padding:9px;font-size:11px;font-family:monospace;box-sizing:border-box;display:none"></textarea>
-    <div id="copy-hint" style="font-size:10px;color:#64748B;margin-top:5px;display:none">↑ テキストを長押しでコピーできます</div>
-    <button onclick="document.getElementById('data-modal').style.display='none'" style="width:100%;margin-top:10px;padding:10px;background:#334155;border:none;border-radius:7px;color:#E2E8F0;font-size:13px;cursor:pointer">閉じる</button>
+    <textarea id="data-output" readonly style="width:100%;height:230px;background:#0F172A;color:#E2E8F0;border:1px solid #334155;border-radius:7px;padding:9px;font-size:14px;font-family:monospace;box-sizing:border-box;display:none"></textarea>
+    <div id="copy-hint" style="font-size:13px;color:#93A3BD;margin-top:5px;display:none">↑ テキストを長押しでコピーできます</div>
+    <button onclick="document.getElementById('data-modal').style.display='none'" style="width:100%;margin-top:10px;padding:10px;background:#334155;border:none;border-radius:7px;color:#E2E8F0;font-size:16px;cursor:pointer">閉じる</button>
   </div>
 </div>
 
@@ -634,7 +636,7 @@ async function pullFromServer(){
 async function forceResyncAll(btn){
   const st=document.getElementById('resync-status');
   if(btn) btn.disabled=true;
-  if(st){ st.style.display='block'; st.style.color='#94A3B8'; st.textContent=`送信中... (0/${records.length}件)`; }
+  if(st){ st.style.display='block'; st.style.color='#B9C6DC'; st.textContent=`送信中... (0/${records.length}件)`; }
 
   records.forEach(r=>enqueueSync(r));
 
@@ -873,25 +875,25 @@ function handleSubmit(){
       const container = document.getElementById('confirm-items');
       container.innerHTML = warnings.map(w => `
         <div style="background:#0F172A;border-radius:8px;padding:12px;border-left:3px solid ${w.color}">
-          <div style="font-size:13px;font-weight:700;color:${w.color};margin-bottom:6px">${w.label}</div>
-          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px">
-            <span style="color:#64748B">前回</span>
+          <div style="font-size:16px;font-weight:700;color:${w.color};margin-bottom:6px">${w.label}</div>
+          <div style="display:flex;justify-content:space-between;font-size:15px;margin-bottom:3px">
+            <span style="color:#93A3BD">前回</span>
             <span style="color:#F1F5F9">${w.prev.toFixed(1)}万円</span>
           </div>
-          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px">
-            <span style="color:#64748B">今回（入力値）</span>
+          <div style="display:flex;justify-content:space-between;font-size:15px;margin-bottom:3px">
+            <span style="color:#93A3BD">今回（入力値）</span>
             <span style="color:#F1F5F9">${w.next.toFixed(1)}万円</span>
           </div>
           ${w.inAmt>0||w.outAmt>0 ? `
-          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px">
-            <span style="color:#64748B">入出金除いた純変動</span>
+          <div style="display:flex;justify-content:space-between;font-size:15px;margin-bottom:3px">
+            <span style="color:#93A3BD">入出金除いた純変動</span>
             <span style="color:#F1F5F9">${w.pureNext.toFixed(1)}万円</span>
           </div>` : ''}
-          <div style="display:flex;justify-content:space-between;font-size:13px;margin-top:6px;padding-top:6px;border-top:1px solid #1E293B">
-            <span style="color:#64748B">変動率</span>
+          <div style="display:flex;justify-content:space-between;font-size:16px;margin-top:6px;padding-top:6px;border-top:1px solid #1E293B">
+            <span style="color:#93A3BD">変動率</span>
             <span style="font-weight:800;color:${Math.abs(w.chg)>=15?'#EF4444':'#F1F5F9'}">${w.chg>=0?'+':''}${w.chg.toFixed(1)}% ⚠️</span>
           </div>
-          ${w.inAmt>0||w.outAmt>0 ? `<div style="font-size:11px;color:#F59E0B;margin-top:4px">💡 入金+${w.inAmt}万／出金-${w.outAmt}万が含まれています</div>` : ''}
+          ${w.inAmt>0||w.outAmt>0 ? `<div style="font-size:14px;color:#F59E0B;margin-top:4px">💡 入金+${w.inAmt}万／出金-${w.outAmt}万が含まれています</div>` : ''}
         </div>
       `).join('');
       document.getElementById('input-confirm-modal').style.display='block';
@@ -988,6 +990,16 @@ function renderAll(){
   if(document.getElementById('panel-weekly')?.classList.contains('active')) renderWeeklyCheck();
 }
 
+/* シグナルの開閉状態（再描画をまたいで保持） */
+let signalExpanded = false;
+function toggleSignalDetail(){
+  signalExpanded = !signalExpanded;
+  const rows=document.getElementById('signal-rows');
+  const hint=document.getElementById('sig-toggle-hint');
+  if(rows) rows.style.display = signalExpanded ? 'flex' : 'none';
+  if(hint) hint.textContent = signalExpanded ? 'タップで閉じる ▴' : 'タップで詳細 ▾';
+}
+
 /* 合計シグナル（入出金除外） */
 function renderSignal(){
   const bar=document.getElementById('signal-bar');
@@ -998,7 +1010,7 @@ function renderSignal(){
   let worst=null; let rowsHtml='';
   SIGNALS.forEach(sig=>{
     const pi=records.length-1-sig.days;
-    if(pi<0){ rowsHtml+=`<div class="signal-row"><span class="sr-label">${sig.days}日前比（調整済）</span><span style="color:#475569">データ不足</span></div>`; return; }
+    if(pi<0){ rowsHtml+=`<div class="signal-row"><span class="sr-label">${sig.days}日前比（調整済）</span><span style="color:#8394AF">データ不足</span></div>`; return; }
     const pt=adjustedTotal(records[pi]);
     if(pt===null||pt===0) return;
     const cp=((lt-pt)/pt)*100;
@@ -1009,16 +1021,17 @@ function renderSignal(){
   });
   bar.className=''; bar.style.display='block';
   document.getElementById('signal-rows').innerHTML=rowsHtml;
+  document.getElementById('signal-rows').style.display = signalExpanded ? 'flex' : 'none';
+  const hintEl=document.getElementById('sig-toggle-hint');
+  if(hintEl) hintEl.textContent = signalExpanded ? 'タップで閉じる ▴' : 'タップで詳細 ▾';
   if(worst){
     bar.classList.add(worst.cls);
     document.getElementById('signal-icon').textContent=worst.label.slice(0,2);
     document.getElementById('signal-title').textContent=worst.label.slice(3);
-    document.getElementById('signal-detail').textContent=worst.desc;
   } else {
     bar.classList.add('s-ok');
     document.getElementById('signal-icon').textContent='✅';
     document.getElementById('signal-title').textContent='通常相場';
-    document.getElementById('signal-detail').textContent='買い増しシグナルなし';
   }
 }
 
@@ -1202,10 +1215,10 @@ function renderChart(){
     type:'line', data:{labels,datasets},
     options:{
       responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{labels:{color:'#94A3B8',font:{size:11}}}, tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.parsed.y}万`}} },
+      plugins:{ legend:{labels:{color:'#B9C6DC',font:{size:11}}}, tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.parsed.y}万`}} },
       scales:{
-        x:{ticks:{color:'#64748B',font:{size:10}},grid:{color:'#1E3A5F'}},
-        y:{ticks:{color:'#64748B',font:{size:10},callback:v=>v+'万'},grid:{color:'#1E3A5F'}}
+        x:{ticks:{color:'#93A3BD',font:{size:10}},grid:{color:'#1E3A5F'}},
+        y:{ticks:{color:'#93A3BD',font:{size:10},callback:v=>v+'万'},grid:{color:'#1E3A5F'}}
       }
     }
   });
@@ -1223,13 +1236,13 @@ function renderTable(){
   [...records].reverse().filter(r=>!keyword||(r.memo||'').toLowerCase().includes(keyword)).forEach(r=>{
     const idx=records.indexOf(r); const p=records[idx-1];
     const tr=document.createElement('tr');
-    let html=`<td>${r.date.slice(5)}${r.memo?'<br><span style="font-size:9px;color:#475569">'+r.memo+'</span>':''}</td>`;
+    let html=`<td>${r.date.slice(5)}${r.memo?'<br><span style="font-size:12px;color:#8394AF">'+r.memo+'</span>':''}</td>`;
     FUNDS.forEach(f=>{
       const d=p&&p[f.key]!=null&&r[f.key]!=null?r[f.key]-p[f.key]:null;
       const hasIO=(r['in_'+f.key]||0)+(r['out_'+f.key]||0)>0;
       html+=`<td><span style="color:${f.color}">${r[f.key]??'―'}</span>`;
-      if(d!=null) html+=`<span style="font-size:9px;margin-left:2px" class="${d>=0?'up':'down'}">${d>=0?'+':''}${d.toFixed(1)}</span>`;
-      if(hasIO) html+=`<br><span style="font-size:9px;color:#F59E0B">+${r['in_'+f.key]||0}/-${r['out_'+f.key]||0}</span>`;
+      if(d!=null) html+=`<span style="font-size:12px;margin-left:2px" class="${d>=0?'up':'down'}">${d>=0?'+':''}${d.toFixed(1)}</span>`;
+      if(hasIO) html+=`<br><span style="font-size:12px;color:#F59E0B">+${r['in_'+f.key]||0}/-${r['out_'+f.key]||0}</span>`;
       html+='</td>';
     });
     html+=`<td class="td-total">${totalWan(r)??'―'}</td>`;
@@ -1242,7 +1255,7 @@ function renderToggles(){
   FUNDS.forEach(f=>{
     const b=document.getElementById('toggle-'+f.key); if(!b) return;
     b.style.background=visibleFunds[f.key]?f.color+'33':'transparent';
-    b.style.color=visibleFunds[f.key]?f.color:'#64748B';
+    b.style.color=visibleFunds[f.key]?f.color:'#93A3BD';
   });
 }
 
@@ -1257,13 +1270,13 @@ function exportCSV(){
   btnContainer.innerHTML=''; output.style.display='none'; hint.style.display='none';
   const allBtn=document.createElement('button');
   allBtn.textContent='全件';
-  allBtn.style.cssText='padding:5px 11px;background:#3B82F6;border:none;border-radius:7px;color:white;font-size:12px;cursor:pointer';
+  allBtn.style.cssText='padding:5px 11px;background:#3B82F6;border:none;border-radius:7px;color:white;font-size:15px;cursor:pointer';
   allBtn.onclick=()=>showData(records);
   btnContainer.appendChild(allBtn);
   months.forEach(m=>{
     const btn=document.createElement('button');
     btn.textContent=m;
-    btn.style.cssText='padding:5px 11px;background:#1E293B;border:1px solid #334155;border-radius:7px;color:#E2E8F0;font-size:12px;cursor:pointer';
+    btn.style.cssText='padding:5px 11px;background:#1E293B;border:1px solid #334155;border-radius:7px;color:#E2E8F0;font-size:15px;cursor:pointer';
     btn.onclick=()=>showData(records.filter(r=>r.date.startsWith(m)));
     btnContainer.appendChild(btn);
   });
@@ -1344,22 +1357,22 @@ function openSignalSettings(){
     let rows = '';
     SIGNALS.forEach(sig => {
       const pi = records.length-1-sig.days;
-      if(pi < 0){ rows += `<div style="padding:6px 10px;background:#0F172A;border-radius:6px;margin-bottom:4px;font-size:12px;color:#475569">${sig.days}日前比：データ不足</div>`; return; }
+      if(pi < 0){ rows += `<div style="padding:6px 10px;background:#0F172A;border-radius:6px;margin-bottom:4px;font-size:15px;color:#8394AF">${sig.days}日前比：データ不足</div>`; return; }
       const pt = parseFloat(adjustedTotal(records[pi]));
       if(isNaN(pt)||pt===0) return;
       const cp = ((lt-pt)/pt*100).toFixed(1);
       const hit = parseFloat(cp) <= sig.pct;
       const col = hit ? '#EF4444' : '#34D399';
       rows += `<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:#0F172A;border-radius:6px;margin-bottom:4px;cursor:pointer" onclick="explainSignal(${sig.days},${Math.abs(sig.pct)},'${sig.label.slice(3)}')">
-        <span style="font-size:12px;color:#94A3B8">${sig.days}日前比　<span style="font-size:10px;color:#475569">設定：${sig.pct}%</span></span>
+        <span style="font-size:15px;color:#B9C6DC">${sig.days}日前比　<span style="font-size:13px;color:#8394AF">設定：${sig.pct}%</span></span>
         <div style="display:flex;align-items:center;gap:6px">
           <span style="font-weight:700;color:${col}">${parseFloat(cp)>=0?'+':''}${cp}%</span>
-          ${hit?`<span style="font-size:10px;padding:2px 6px;border-radius:8px;background:rgba(239,68,68,.2);color:#EF4444">HIT</span>`:''}
-          <span style="font-size:11px;color:#475569">💬</span>
+          ${hit?`<span style="font-size:13px;padding:2px 6px;border-radius:8px;background:rgba(239,68,68,.2);color:#EF4444">HIT</span>`:''}
+          <span style="font-size:14px;color:#8394AF">💬</span>
         </div>
       </div>`;
     });
-    descEl.innerHTML = rows + '<div style="font-size:11px;color:#475569;margin-top:8px">💬 各行をタップすると詳しい説明が見られます</div>';
+    descEl.innerHTML = rows + '<div style="font-size:14px;color:#8394AF;margin-top:8px">💬 各行をタップすると詳しい説明が見られます</div>';
   }
   
   document.getElementById('signal-settings-modal').style.display = 'block';
@@ -1400,7 +1413,7 @@ function showTotalChart(mode){
     if(m===mode){
       btn.style.background='#3B82F6'; btn.style.color='white'; btn.style.fontWeight='700';
     } else {
-      btn.style.background='transparent'; btn.style.color='#64748B'; btn.style.fontWeight='400';
+      btn.style.background='transparent'; btn.style.color='#93A3BD'; btn.style.fontWeight='400';
     }
   });
 
@@ -1448,8 +1461,8 @@ function renderTotalDaily(){
         }
       },
       scales: {
-        x: { stacked:true, ticks:{color:'#94A3B8',font:{size:10}}, grid:{color:'#1E3A5F'} },
-        y: { stacked:true, min:0, ticks:{color:'#94A3B8',font:{size:11},callback:v=>v+'万'}, grid:{color:'#1E3A5F'} }
+        x: { stacked:true, ticks:{color:'#B9C6DC',font:{size:10}}, grid:{color:'#1E3A5F'} },
+        y: { stacked:true, min:0, ticks:{color:'#B9C6DC',font:{size:11},callback:v=>v+'万'}, grid:{color:'#1E3A5F'} }
       }
     }
   });
@@ -1518,14 +1531,14 @@ function renderTotalBarChart(labels, data, colors, borders){
       scales: {
         x: {
           stacked: true,
-          ticks: { color: '#94A3B8', font: { size: 11 } },
+          ticks: { color: '#B9C6DC', font: { size: 11 } },
           grid: { color: '#1E3A5F' }
         },
         y: {
           stacked: true,
           min: 0,
           ticks: {
-            color: '#94A3B8',
+            color: '#B9C6DC',
             font: { size: 11 },
             callback: v => v + '万'
           },
@@ -1570,7 +1583,7 @@ function displayTotalDetails(dataByFund, idx){
   
   const detailHtml = `
     <div style="margin-top:14px;background:#0F172A;border-radius:8px;padding:12px;border:1px solid #3B82F6">
-      <div style="font-size:13px;color:#94A3B8;margin-bottom:10px;font-weight:700">📊 ${target.label} の内訳</div>
+      <div style="font-size:16px;color:#B9C6DC;margin-bottom:10px;font-weight:700">📊 ${target.label} の内訳</div>
       <div style="display:flex;flex-direction:column;gap:6px">
         ${FUNDS.map(f => {
           const val = target[f.key]||0;
@@ -1578,16 +1591,16 @@ function displayTotalDetails(dataByFund, idx){
           return `
             <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:#1E293B;border-radius:6px;border-left:3px solid ${f.color}">
               <div>
-                <span style="color:#CBD5E1;font-size:12px">${f.label}</span>
-                <span style="color:#64748B;font-size:11px;margin-left:6px">${pct}%</span>
+                <span style="color:#CBD5E1;font-size:15px">${f.label}</span>
+                <span style="color:#93A3BD;font-size:14px;margin-left:6px">${pct}%</span>
               </div>
-              <span style="color:${f.color};font-weight:700;font-size:15px">${val.toFixed(1)}万</span>
+              <span style="color:${f.color};font-weight:700;font-size:18px">${val.toFixed(1)}万</span>
             </div>
           `;
         }).join('')}
         <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 10px;background:#1E3A5F;border-radius:6px;margin-top:2px">
-          <span style="color:#F1F5F9;font-size:13px;font-weight:700">合計</span>
-          <span style="color:#3B82F6;font-weight:800;font-size:17px">${total.toFixed(1)}万円</span>
+          <span style="color:#F1F5F9;font-size:16px;font-weight:700">合計</span>
+          <span style="color:#3B82F6;font-weight:800;font-size:20px">${total.toFixed(1)}万円</span>
         </div>
       </div>
     </div>
@@ -1620,7 +1633,7 @@ function showBarChart(mode){
     if(m===mode){
       btn.style.background='#3B82F6'; btn.style.color='white'; btn.style.fontWeight='700';
     } else {
-      btn.style.background='transparent'; btn.style.color='#64748B'; btn.style.fontWeight='400';
+      btn.style.background='transparent'; btn.style.color='#93A3BD'; btn.style.fontWeight='400';
     }
   });
 
@@ -1693,8 +1706,8 @@ function renderBarChart(labels, data){
         tooltip:{ callbacks:{ label:ctx=>`${ctx.dataset.label}: ${ctx.parsed.y>=0?'+':''}${ctx.parsed.y}万` } }
       },
       scales:{
-        x:{ ticks:{color:'#94A3B8',font:{size:11}}, grid:{color:'#1E3A5F'}, stacked:false },
-        y:{ ticks:{color:'#94A3B8',font:{size:11},callback:v=>(v>=0?'+':'')+v+'万'}, grid:{color:'#1E3A5F'} }
+        x:{ ticks:{color:'#B9C6DC',font:{size:11}}, grid:{color:'#1E3A5F'}, stacked:false },
+        y:{ ticks:{color:'#B9C6DC',font:{size:11},callback:v=>(v>=0?'+':'')+v+'万'}, grid:{color:'#1E3A5F'} }
       }
     }
   });
@@ -1702,9 +1715,9 @@ function renderBarChart(labels, data){
   // 凡例
   const leg = document.getElementById('bar-legend');
   leg.innerHTML = FUNDS.map(f=>`
-    <div style="display:flex;align-items:center;gap:5px;font-size:11px">
+    <div style="display:flex;align-items:center;gap:5px;font-size:14px">
       <span style="width:12px;height:12px;border-radius:3px;background:${f.color};display:inline-block"></span>
-      <span style="color:#94A3B8">${f.label}</span>
+      <span style="color:#B9C6DC">${f.label}</span>
     </div>
   `).join('');
 }
@@ -1733,7 +1746,7 @@ function renderPie(){
   });
   // カスタム凡例（タップで説明モーダル）
   const leg=document.getElementById('pie-legend');
-  leg.innerHTML='<div style="font-size:11px;color:#475569;margin-bottom:8px">💡 各項目をタップすると詳細説明が見られます</div>';
+  leg.innerHTML='<div style="font-size:14px;color:#8394AF;margin-bottom:8px">💡 各項目をタップすると詳細説明が見られます</div>';
   FUNDS.forEach((f,i)=>{
     const pct=(vals[i]/total*100).toFixed(1);
     const warn=f.key==='fang'&&parseFloat(pct)>=settings.fangThreshold;
@@ -1741,13 +1754,13 @@ function renderPie(){
     div.style.cssText='display:flex;justify-content:space-between;align-items:center;background:#1E293B;border-radius:7px;padding:9px 12px;border-left:3px solid '+f.color+';margin-bottom:6px;cursor:pointer';
     div.innerHTML=`
       <div style="display:flex;align-items:center;gap:8px">
-        <span style="font-size:13px;color:${f.color};font-weight:700">${f.label}</span>
-        ${warn?`<span style="font-size:10px;background:rgba(245,158,11,.2);color:#F59E0B;padding:1px 6px;border-radius:8px">⚠ ${settings.fangThreshold}%超</span>`:''}
-        <span style="font-size:10px;color:#475569">📊</span>
+        <span style="font-size:16px;color:${f.color};font-weight:700">${f.label}</span>
+        ${warn?`<span style="font-size:13px;background:rgba(245,158,11,.2);color:#F59E0B;padding:1px 6px;border-radius:8px">⚠ ${settings.fangThreshold}%超</span>`:''}
+        <span style="font-size:13px;color:#8394AF">📊</span>
       </div>
       <div style="text-align:right">
-        <span style="font-size:16px;font-weight:700;color:${f.color}">${pct}%</span>
-        <span style="font-size:12px;color:#64748B;margin-left:6px">${vals[i].toFixed(1)}万</span>
+        <span style="font-size:19px;font-weight:700;color:${f.color}">${pct}%</span>
+        <span style="font-size:15px;color:#93A3BD;margin-left:6px">${vals[i].toFixed(1)}万</span>
       </div>
     `;
     div.addEventListener('click', (function(key,label,color){ return function(){ if(typeof explainAlloc==='function') explainAlloc(key,label,color); }; })(f.key,f.label,f.color));
@@ -1826,7 +1839,7 @@ function renderCycleCard(seg, baselineFor){
     // ファンド別騰落率
     const fundRows = FUNDS.map(f=>{
       const p = pctChange(last[f.key], base[f.key]);
-      const col = p==null ? '#475569' : (p>=0?'#F87171':'#60A5FA');
+      const col = p==null ? '#8394AF' : (p>=0?'#F87171':'#60A5FA');
       const txt = p==null ? '―' : (p>=0?'+':'')+p.toFixed(1)+'%';
       return `<div class="cycle-fund-row"><span class="cycle-fund-name">${f.label}</span><span class="cycle-fund-pct" style="color:${col}">${txt}</span></div>`;
     }).join('');
@@ -1876,7 +1889,7 @@ function renderCycleCard(seg, baselineFor){
         </div>
         <div class="cycle-funds">${fundRows}</div>
         <div class="cycle-meta">
-          <span>合計 <b style="color:${totalP==null?'#64748B':(totalP>=0?'#F87171':'#60A5FA')}">${totalP==null?'―':(totalP>=0?'+':'')+totalP.toFixed(1)+'%'}</b></span>
+          <span>合計 <b style="color:${totalP==null?'#93A3BD':(totalP>=0?'#F87171':'#60A5FA')}">${totalP==null?'―':(totalP>=0?'+':'')+totalP.toFixed(1)+'%'}</b></span>
           <span>最大DD <b>${maxDD.toFixed(1)}%</b></span>
         </div>
         ${volHtml}
@@ -1908,17 +1921,17 @@ function renderCycles(){
   if(openSegs.length){
     const lastRecordDate = records[records.length-1].date;
     const next = nextCycleBoundaryAfter(lastRecordDate);
-    html += `<div style="font-size:12px;font-weight:700;color:#3B82F6;margin-bottom:8px">🔴 進行中のサイクル</div>`;
+    html += `<div style="font-size:15px;font-weight:700;color:#3B82F6;margin-bottom:8px">🔴 進行中のサイクル</div>`;
     html += openSegs.map(seg=>renderCycleCard(seg, baselineFor)).join('');
     if(next){
-      html += `<div style="font-size:11px;color:#64748B;margin:6px 0 16px;padding:8px 10px;background:#1E293B;border-radius:7px">📅 次回の銘柄入替予定：<b style="color:#CBD5E1">${next}</b>（あと${daysBetween(lastRecordDate,next)}日）</div>`;
+      html += `<div style="font-size:14px;color:#93A3BD;margin:6px 0 16px;padding:8px 10px;background:#1E293B;border-radius:7px">📅 次回の銘柄入替予定：<b style="color:#CBD5E1">${next}</b>（あと${daysBetween(lastRecordDate,next)}日）</div>`;
     }
   }
 
   // 過去の履歴セクション
-  html += `<div style="font-size:12px;font-weight:700;color:#94A3B8;margin:14px 0 8px">📜 過去のサイクル履歴（${closedSegs.length}件）</div>`;
+  html += `<div style="font-size:15px;font-weight:700;color:#B9C6DC;margin:14px 0 8px">📜 過去のサイクル履歴（${closedSegs.length}件）</div>`;
   if(closedSegs.length===0){
-    html += `<div style="font-size:12px;color:#475569;background:#1E293B;border-radius:8px;padding:14px;text-align:center">まだ入替日を跨いだサイクルがありません。<br>上の「次回の銘柄入替予定日」を過ぎて記録を追加すると、ここに1件目の履歴が追加されます。</div>`;
+    html += `<div style="font-size:15px;color:#8394AF;background:#1E293B;border-radius:8px;padding:14px;text-align:center">まだ入替日を跨いだサイクルがありません。<br>上の「次回の銘柄入替予定日」を過ぎて記録を追加すると、ここに1件目の履歴が追加されます。</div>`;
   } else {
     html += closedSegs.map(seg=>renderCycleCard(seg, baselineFor)).join('');
   }
@@ -2027,7 +2040,7 @@ function renderWeeklyCheck(){
 
   const fundRows=check.gains.map(g=>{
     const isTop = check.topFund && g.key===check.topFund.key;
-    const col = g.gain==null?'#475569':(g.gain>=0?'#F87171':'#60A5FA');
+    const col = g.gain==null?'#8394AF':(g.gain>=0?'#F87171':'#60A5FA');
     const txt = g.gain==null?'―':(g.gain>=0?'+':'')+g.gain.toFixed(1)+'万';
     return `<div class="cycle-fund-row" style="${isTop?'border:1px solid '+g.color+'88':''}">
       <span class="cycle-fund-name">${g.label}${isTop?' 👑':''}</span>
@@ -2037,22 +2050,22 @@ function renderWeeklyCheck(){
 
   const statusBadge = check.triggered
     ? `<span class="cycle-status good">🟢 発動条件成立</span>`
-    : `<span class="cycle-status" style="background:#33415533;color:#94A3B8">⚪ 未成立</span>`;
+    : `<span class="cycle-status" style="background:#33415533;color:#B9C6DC">⚪ 未成立</span>`;
 
   let actionHtml='';
   if(check.triggered && check.topFund && check.skimAmount>0){
     actionHtml = `
       <div style="background:rgba(52,211,153,.12);border:1px solid #34D39944;border-radius:8px;padding:10px 12px;margin-top:10px">
-        <div style="font-size:12px;color:#34D399;margin-bottom:4px">現金化提案（${check.topFund.label}の累計益 ${check.skimPct}%）</div>
-        <div style="font-size:20px;font-weight:800;color:#34D399">${check.skimAmount.toFixed(1)}万円</div>
-        <button onclick="applyWeeklySkim()" style="width:100%;margin-top:8px;padding:9px;background:#10B981;border:none;border-radius:7px;color:#04140D;font-size:12px;font-weight:800;cursor:pointer">この額を${check.topFund.label}の出金欄に反映 ↗</button>
+        <div style="font-size:15px;color:#34D399;margin-bottom:4px">現金化提案（${check.topFund.label}の累計益 ${check.skimPct}%）</div>
+        <div style="font-size:23px;font-weight:800;color:#34D399">${check.skimAmount.toFixed(1)}万円</div>
+        <button onclick="applyWeeklySkim()" style="width:100%;margin-top:8px;padding:9px;background:#10B981;border:none;border-radius:7px;color:#04140D;font-size:15px;font-weight:800;cursor:pointer">この額を${check.topFund.label}の出金欄に反映 ↗</button>
       </div>`;
   } else {
     const reasons=[];
     if(!check.athEventInCurWeek) reasons.push('今週まだ合計資産のATH更新なし');
     if(!check.weekOverWeekPositive) reasons.push('前週金曜比でマイナス（または前週データ不足）');
     if(check.topFund && check.topFund.gain<=0) reasons.push('累計トップファンドの含み益が0以下');
-    actionHtml = `<div style="font-size:11px;color:#64748B;margin-top:10px;padding:8px 10px;background:#0F172A;border-radius:7px">条件未成立：${reasons.join('／')||'―'}</div>`;
+    actionHtml = `<div style="font-size:14px;color:#93A3BD;margin-top:10px;padding:8px 10px;background:#0F172A;border-radius:7px">条件未成立：${reasons.join('／')||'―'}</div>`;
   }
 
   content.innerHTML = `
@@ -2064,7 +2077,7 @@ function renderWeeklyCheck(){
         </div>
         ${statusBadge}
       </div>
-      <div style="font-size:11px;color:#64748B;margin-bottom:6px">運用開始からの累計増加額（入出金調整済）</div>
+      <div style="font-size:14px;color:#93A3BD;margin-bottom:6px">運用開始からの累計増加額（入出金調整済）</div>
       <div class="cycle-funds">${fundRows}</div>
       ${actionHtml}
     </div>
@@ -2087,9 +2100,9 @@ init();
 <!-- 説明モーダル（後付け追加） -->
 <div id="explain-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.88);z-index:10000;padding:14px;box-sizing:border-box;overflow-y:auto">
   <div style="background:#1E293B;border-radius:14px;padding:18px;max-width:460px;margin:0 auto;margin-top:4vh">
-    <div id="explain-title" style="font-size:16px;font-weight:800;color:#F1F5F9;margin-bottom:14px"></div>
-    <div id="explain-body" style="font-size:13px;color:#CBD5E1;line-height:1.8"></div>
-    <button onclick="document.getElementById('explain-modal').style.display='none'" style="width:100%;margin-top:16px;padding:12px;background:#334155;border:none;border-radius:9px;color:#E2E8F0;font-size:14px;cursor:pointer">閉じる</button>
+    <div id="explain-title" style="font-size:19px;font-weight:800;color:#F1F5F9;margin-bottom:14px"></div>
+    <div id="explain-body" style="font-size:16px;color:#CBD5E1;line-height:1.8"></div>
+    <button onclick="document.getElementById('explain-modal').style.display='none'" style="width:100%;margin-top:16px;padding:12px;background:#334155;border:none;border-radius:9px;color:#E2E8F0;font-size:17px;cursor:pointer">閉じる</button>
   </div>
 </div>
 <script>
@@ -2101,29 +2114,29 @@ function showExplain(title, bodyHtml){
 }
 
 function calcRow(label, val){
-  return `<div style="display:flex;justify-content:space-between;padding:6px 10px;background:#0F172A;border-radius:6px;margin-bottom:4px"><span style="color:#64748B">${label}</span><span style="color:#F1F5F9;font-weight:700">${val}</span></div>`;
+  return `<div style="display:flex;justify-content:space-between;padding:6px 10px;background:#0F172A;border-radius:6px;margin-bottom:4px"><span style="color:#93A3BD">${label}</span><span style="color:#F1F5F9;font-weight:700">${val}</span></div>`;
 }
 function calcStep(text){
-  return `<div style="padding:7px 10px;background:#0F172A;border-radius:6px;margin-bottom:4px;font-family:monospace;color:#34D399;font-size:12px">${text}</div>`;
+  return `<div style="padding:7px 10px;background:#0F172A;border-radius:6px;margin-bottom:4px;font-family:monospace;color:#34D399;font-size:15px">${text}</div>`;
 }
 function section(title, content){
-  return `<div style="margin-bottom:14px"><div style="font-size:11px;color:#3B82F6;font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em">${title}</div>${content}</div>`;
+  return `<div style="margin-bottom:14px"><div style="font-size:14px;color:#3B82F6;font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em">${title}</div>${content}</div>`;
 }
 function note(text){
-  return `<div style="background:rgba(59,130,246,.1);border:1px solid #3B82F644;border-radius:7px;padding:8px 10px;font-size:12px;color:#93C5FD;margin-top:8px">${text}</div>`;
+  return `<div style="background:rgba(59,130,246,.1);border:1px solid #3B82F644;border-radius:7px;padding:8px 10px;font-size:15px;color:#93C5FD;margin-top:8px">${text}</div>`;
 }
 
 // ① 日次増減タップ説明
 function explainDiff(fundKey, fundLabel, color){
   if(records.length < 2){
-    showExplain('📉 増減の理由', '<div style="color:#64748B">記録が2件以上あると表示できます。</div>');
+    showExplain('📉 増減の理由', '<div style="color:#93A3BD">記録が2件以上あると表示できます。</div>');
     return;
   }
   const latest = records[records.length-1];
   const prev   = records[records.length-2];
   const lv = latest[fundKey], pv = prev[fundKey];
   if(lv==null||pv==null){
-    showExplain('📉 増減の理由','<div style="color:#64748B">データが不足しています。</div>');
+    showExplain('📉 増減の理由','<div style="color:#93A3BD">データが不足しています。</div>');
     return;
   }
   const diff = (lv - pv).toFixed(1);
@@ -2144,7 +2157,7 @@ function explainDiff(fundKey, fundLabel, color){
       calcStep(`${lv} - ${pv} = ${diff}万円`)
     )+
     section('③ いくら動いたか',
-      `<div style="font-size:22px;font-weight:800;color:${col};text-align:center;padding:8px 0">${parseFloat(diff)>=0?'+':''}${diff}万円</div>`
+      `<div style="font-size:24px;font-weight:800;color:${col};text-align:center;padding:8px 0">${parseFloat(diff)>=0?'+':''}${diff}万円</div>`
     )+
     section('④ 何を意味するか',
       calcRow('今回の入金','+'+inAmt+'万円') +
@@ -2161,10 +2174,10 @@ function explainDiff(fundKey, fundLabel, color){
 // ② 月間成績タップ説明
 function explainMonthly(){
   const latest = records[records.length-1];
-  if(!latest){ showExplain('📅 今月の成績','<div style="color:#64748B">データがありません。</div>'); return; }
+  if(!latest){ showExplain('📅 今月の成績','<div style="color:#93A3BD">データがありません。</div>'); return; }
   const ym = latest.date.slice(0,7);
   const mFirst = records.find(r=>r.date.startsWith(ym));
-  if(!mFirst||mFirst===latest){ showExplain('📅 今月の成績','<div style="color:#64748B">今月のデータが1件しかありません。</div>'); return; }
+  if(!mFirst||mFirst===latest){ showExplain('📅 今月の成績','<div style="color:#93A3BD">今月のデータが1件しかありません。</div>'); return; }
   const lt = parseFloat(totalWan(latest)), mf = parseFloat(totalWan(mFirst));
   const diff = (lt-mf).toFixed(1);
   const pct  = ((lt-mf)/mf*100).toFixed(2);
@@ -2185,7 +2198,7 @@ function explainMonthly(){
       calcStep(`${diff} ÷ ${mf} × 100 = ${pct}%`)
     )+
     section('④ 何を意味するか',
-      `<div style="font-size:22px;font-weight:800;color:${col};text-align:center;padding:8px 0">${isUp?'+':''}${diff}万円（${isUp?'+':''}${pct}%）</div>` +
+      `<div style="font-size:24px;font-weight:800;color:${col};text-align:center;padding:8px 0">${isUp?'+':''}${diff}万円（${isUp?'+':''}${pct}%）</div>` +
       note(`💡 今月だけで<strong>${isUp?'+':''}${diff}万円</strong>増減しています。<br>もし100万円で同じ動きをしていたなら、<strong>${(parseFloat(pct)).toFixed(1)}万円</strong>の増減です。<br>％は「元のお金に対して何%動いたか」を表す数字です。`)
     );
   showExplain('📊 この％の意味　今月の成績', body);
@@ -2194,10 +2207,10 @@ function explainMonthly(){
 // ②' 週間成績タップ説明
 function explainWeeklyBar(){
   const latest = records[records.length-1];
-  if(!latest){ showExplain('📆 今週の成績','<div style="color:#64748B">データがありません。</div>'); return; }
+  if(!latest){ showExplain('📆 今週の成績','<div style="color:#93A3BD">データがありません。</div>'); return; }
   const wk = getISOWeekKey(latest.date);
   const wFirst = records.find(r=>getISOWeekKey(r.date)===wk);
-  if(!wFirst||wFirst===latest){ showExplain('📆 今週の成績','<div style="color:#64748B">今週のデータが1件しかありません。</div>'); return; }
+  if(!wFirst||wFirst===latest){ showExplain('📆 今週の成績','<div style="color:#93A3BD">今週のデータが1件しかありません。</div>'); return; }
   const lt = parseFloat(totalWan(latest)), wf = parseFloat(totalWan(wFirst));
   const diff = (lt-wf).toFixed(1);
   const pct  = ((lt-wf)/wf*100).toFixed(2);
@@ -2219,7 +2232,7 @@ function explainWeeklyBar(){
       calcStep(`${diff} ÷ ${wf} × 100 = ${pct}%`)
     )+
     section('④ 何を意味するか',
-      `<div style="font-size:22px;font-weight:800;color:${col};text-align:center;padding:8px 0">${isUp?'+':''}${diff}万円（${isUp?'+':''}${pct}%）</div>` +
+      `<div style="font-size:24px;font-weight:800;color:${col};text-align:center;padding:8px 0">${isUp?'+':''}${diff}万円（${isUp?'+':''}${pct}%）</div>` +
       note(`💡 今週（月曜始まり）だけで<strong>${isUp?'+':''}${diff}万円</strong>増減しています。<br>週次現金化チェックの判定にも、この週の値動きが関わってきます。`)
     );
   showExplain('📆 この％の意味　今週の成績', body);
@@ -2228,7 +2241,7 @@ function explainWeeklyBar(){
 // ③ ATH・DDタップ説明
 function explainATH(){
   const totals = records.map(r=>({date:r.date, val:parseFloat(totalWan(r))})).filter(r=>!isNaN(r.val));
-  if(totals.length===0){ showExplain('🏔️ 最高資産との差','<div style="color:#64748B">データがありません。</div>'); return; }
+  if(totals.length===0){ showExplain('🏔️ 最高資産との差','<div style="color:#93A3BD">データがありません。</div>'); return; }
   const athObj = totals.reduce((a,b)=>a.val>b.val?a:b);
   const latest = totals[totals.length-1];
   const diff = (latest.val - athObj.val).toFixed(1);
@@ -2237,7 +2250,7 @@ function explainATH(){
 
   const body = isNew ?
     section('🎉 最高値更新！',
-      `<div style="font-size:20px;font-weight:800;color:#34D399;text-align:center;padding:12px 0">現在が過去最高の資産です！</div>` +
+      `<div style="font-size:23px;font-weight:800;color:#34D399;text-align:center;padding:12px 0">現在が過去最高の資産です！</div>` +
       note('💡 おめでとうございます！今日が過去最高の資産額です。この調子で積み上げていきましょう。')
     ) :
     section('① 何を比較しているか',
@@ -2253,7 +2266,7 @@ function explainATH(){
       calcStep(`${diff} ÷ ${athObj.val} × 100 = ${pct}%`)
     )+
     section('④ 何を意味するか',
-      `<div style="font-size:20px;font-weight:800;color:#60A5FA;text-align:center;padding:8px 0">${diff}万円　（DD ${pct}%）</div>` +
+      `<div style="font-size:23px;font-weight:800;color:#60A5FA;text-align:center;padding:8px 0">${diff}万円　（DD ${pct}%）</div>` +
       note(`💡 「ドローダウン（DD）」とは、最高値からどれだけ下がったかを示す数字です。<br>今は最高値より<strong>${Math.abs(parseFloat(diff)).toFixed(1)}万円</strong>少ない状態です。<br>これは相場の一時的な下落で起こります。長期投資では気にしすぎなくてOKです。`)
     );
   showExplain('🏔️ 最高資産との差（ドローダウン）', body);
@@ -2262,7 +2275,7 @@ function explainATH(){
 // ④ シグナル行タップ説明
 function explainSignal(days, pctThreshold, label){
   if(records.length<=days){
-    showExplain('🚨 シグナルの意味','<div style="color:#64748B">データが'+days+'件以上あると計算できます。</div>');
+    showExplain('🚨 シグナルの意味','<div style="color:#93A3BD">データが'+days+'件以上あると計算できます。</div>');
     return;
   }
   const latest = records[records.length-1];
@@ -2290,7 +2303,7 @@ function explainSignal(days, pctThreshold, label){
     section('④ シグナル判定',
       calcRow('設定された閾値', '-'+pctThreshold+'%') +
       calcRow('実際の変化率', pct+'%') +
-      `<div style="font-size:18px;font-weight:800;color:${col};text-align:center;padding:10px 0">${hit?'⚠️ シグナル点灯！':'✅ 通常範囲内'}</div>` +
+      `<div style="font-size:21px;font-weight:800;color:${col};text-align:center;padding:10px 0">${hit?'⚠️ シグナル点灯！':'✅ 通常範囲内'}</div>` +
       (hit ?
         note(`💡 <strong>${days}日間で${pctThreshold}%以上下落</strong>しているため「${label}」が点灯しています。<br>これは「今、いつもより安く買えるかもしれない」タイミングです。<br>ただし、もっと下がる可能性もあります。冷静に判断しましょう。`) :
         note(`💡 まだシグナルは出ていません。${days}日間で-${pctThreshold}%以上下がるとシグナルが点灯します。<br>現在は通常の相場範囲内です。`)
@@ -2302,7 +2315,7 @@ function explainSignal(days, pctThreshold, label){
 // ⑤ 円グラフ比率タップ説明
 function explainAlloc(fundKey, fundLabel, color){
   const latest = records[records.length-1];
-  if(!latest){ showExplain('🥧 資産配分の意味','<div style="color:#64748B">データがありません。</div>'); return; }
+  if(!latest){ showExplain('🥧 資産配分の意味','<div style="color:#93A3BD">データがありません。</div>'); return; }
   const total = FUNDS.reduce((s,f)=>s+(latest[f.key]||0),0);
   const val   = latest[fundKey]||0;
   const pct   = total>0?(val/total*100).toFixed(1):'0';
@@ -2319,7 +2332,7 @@ function explainAlloc(fundKey, fundLabel, color){
       calcStep(`${val.toFixed(1)} ÷ ${total.toFixed(1)} × 100 = ${pct}%`)
     )+
     section('③ いくら占めているか',
-      `<div style="font-size:22px;font-weight:800;color:${color};text-align:center;padding:8px 0">${pct}%　${val.toFixed(1)}万円</div>`
+      `<div style="font-size:24px;font-weight:800;color:${color};text-align:center;padding:8px 0">${pct}%　${val.toFixed(1)}万円</div>`
     )+
     section('④ 何を意味するか',
       calcRow(fundLabel+'が10%下がったら', '-'+drop10+'万円') +
@@ -2381,10 +2394,10 @@ function attachExplainEvents(){
 
 // 合計前日比説明
 function explainTotalDiff(){
-  if(records.length<2){ showExplain('📉 増減の理由','<div style="color:#64748B">記録が2件以上あると表示できます。</div>'); return; }
+  if(records.length<2){ showExplain('📉 増減の理由','<div style="color:#93A3BD">記録が2件以上あると表示できます。</div>'); return; }
   const latest=records[records.length-1], prev=records[records.length-2];
   const lt=parseFloat(totalWan(latest)), pv=parseFloat(totalWan(prev));
-  if(isNaN(lt)||isNaN(pv)){ showExplain('📉 増減の理由','<div style="color:#64748B">データが不完全です。</div>'); return; }
+  if(isNaN(lt)||isNaN(pv)){ showExplain('📉 増減の理由','<div style="color:#93A3BD">データが不完全です。</div>'); return; }
   const diff=(lt-pv).toFixed(1);
   const totalIn=FUNDS.reduce((s,f)=>s+(latest['in_'+f.key]||0),0);
   const totalOut=FUNDS.reduce((s,f)=>s+(latest['out_'+f.key]||0),0);
@@ -2398,7 +2411,7 @@ function explainTotalDiff(){
       calcRow('今回記録日',latest.date)+calcRow('今回の合計資産',lt+'万円')
     )+
     section('② 計算式',calcStep(`${lt} - ${pv} = ${diff}万円`))+
-    section('③ 増減額',`<div style="font-size:22px;font-weight:800;color:${col};text-align:center;padding:8px 0">${isUp?'+':''}${diff}万円</div>`)+
+    section('③ 増減額',`<div style="font-size:24px;font-weight:800;color:${col};text-align:center;padding:8px 0">${isUp?'+':''}${diff}万円</div>`)+
     section('④ 入出金の影響',
       calcRow('入金合計','+'+totalIn+'万円')+calcRow('出金合計','-'+totalOut+'万円')+
       calcRow('純粋な相場変動',(parseFloat(pure)>=0?'+':'')+pure+'万円')+
