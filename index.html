@@ -1139,16 +1139,13 @@ function renderTotal(){
 /* 月間成績 */
 function renderMonthly(){
   const bar=document.getElementById('monthly-bar');
-  if(records.length<2){ bar.style.display='none'; return; }
-  const latest=records[records.length-1];
-  const ym=latest.date.slice(0,7);
-  const monthFirst=records.find(r=>r.date.startsWith(ym));
-  if(!monthFirst||monthFirst.date===latest.date){ bar.style.display='none'; return; }
-  const lt=parseFloat(totalWan(latest)); const mf=parseFloat(totalWan(monthFirst));
+  const res=computePeriodChange('month');
+  if(!res){ bar.style.display='none'; return; }
+  const lt=parseFloat(totalWan(res.curRecord)); const mf=parseFloat(totalWan(res.prevRecord));
   if(isNaN(lt)||isNaN(mf)){ bar.style.display='none'; return; }
   bar.style.display='block';
   const diff=(lt-mf).toFixed(1); const pct=((lt-mf)/mf*100).toFixed(1);
-  document.getElementById('monthly-label').textContent=ym.slice(5)+'月成績';
+  document.getElementById('monthly-label').textContent=res.curKey.slice(5)+'月成績';
   const vEl=document.getElementById('monthly-value');
   const pEl=document.getElementById('monthly-pct');
   vEl.textContent=(parseFloat(diff)>=0?'+':'')+diff+'万';
@@ -1160,16 +1157,13 @@ function renderMonthly(){
 /* 週間成績（月曜始まりISO週） */
 function renderWeeklyBar(){
   const bar=document.getElementById('weekly-bar');
-  if(records.length<2){ bar.style.display='none'; return; }
-  const latest=records[records.length-1];
-  const wk=getISOWeekKey(latest.date);
-  const weekFirst=records.find(r=>getISOWeekKey(r.date)===wk);
-  if(!weekFirst||weekFirst.date===latest.date){ bar.style.display='none'; return; }
-  const lt=parseFloat(totalWan(latest)); const wf=parseFloat(totalWan(weekFirst));
+  const res=computePeriodChange('week');
+  if(!res){ bar.style.display='none'; return; }
+  const lt=parseFloat(totalWan(res.curRecord)); const wf=parseFloat(totalWan(res.prevRecord));
   if(isNaN(lt)||isNaN(wf)){ bar.style.display='none'; return; }
   bar.style.display='block';
   const diff=(lt-wf).toFixed(1); const pct=((lt-wf)/wf*100).toFixed(1);
-  const mon=mondayOfWeek(latest.date);
+  const mon=mondayOfWeek(res.curRecord.date);
   document.getElementById('weekly-label').textContent=mon.slice(5)+'週成績';
   const vEl=document.getElementById('weekly-value');
   const pEl=document.getElementById('weekly-pct');
@@ -1340,16 +1334,13 @@ function restoreData(){
 
 function renderYearly(){
   const bar=document.getElementById('yearly-bar');
-  if(records.length<2){ bar.style.display='none'; return; }
-  const latest=records[records.length-1];
-  const yy=latest.date.slice(0,4);
-  const yearFirst=records.find(r=>r.date.startsWith(yy));
-  if(!yearFirst||yearFirst.date===latest.date){ bar.style.display='none'; return; }
-  const lt=parseFloat(totalWan(latest)); const yf=parseFloat(totalWan(yearFirst));
+  const res=computePeriodChange('year');
+  if(!res){ bar.style.display='none'; return; }
+  const lt=parseFloat(totalWan(res.curRecord)); const yf=parseFloat(totalWan(res.prevRecord));
   if(isNaN(lt)||isNaN(yf)){ bar.style.display='none'; return; }
   bar.style.display='block';
   const diff=(lt-yf).toFixed(1); const pct=((lt-yf)/yf*100).toFixed(1);
-  document.getElementById('yearly-label').textContent=yy+'年累計';
+  document.getElementById('yearly-label').textContent=res.curKey+'年累計';
   const vEl=document.getElementById('yearly-value'); const pEl=document.getElementById('yearly-pct');
   vEl.textContent=(parseFloat(diff)>=0?'+':'')+diff+'万';
   vEl.className='info-bar-value '+(parseFloat(diff)>=0?'up':'down');
@@ -1673,11 +1664,13 @@ function getWeeklyData(){
   const limited = weekKeys.slice(-12);
   return limited.map(wk => {
     const wRecords = records.filter(r=>getISOWeekKey(r.date)===wk);
-    const first = wRecords[0]; const last = wRecords[wRecords.length-1];
-    const mon = mondayOfWeek(first.date);
+    const last = wRecords[wRecords.length-1];
+    const firstIdxThisWeek = records.findIndex(r=>getISOWeekKey(r.date)===wk);
+    const baseline = firstIdxThisWeek>0 ? records[firstIdxThisWeek-1] : wRecords[0];
+    const mon = mondayOfWeek(last.date);
     const result = { week: mon.slice(5)+'週' };
     FUNDS.forEach(f => {
-      const fv = last[f.key]; const iv = first[f.key];
+      const fv = last[f.key]; const iv = baseline[f.key];
       result[f.key] = (fv!=null && iv!=null) ? parseFloat((fv-iv).toFixed(1)) : 0;
     });
     return result;
@@ -1688,10 +1681,12 @@ function getMonthlyData(){
   const months = [...new Set(records.map(r=>r.date.slice(0,7)))].sort().slice(-12);
   return months.map(m => {
     const mRecords = records.filter(r=>r.date.startsWith(m));
-    const first = mRecords[0]; const last = mRecords[mRecords.length-1];
+    const last = mRecords[mRecords.length-1];
+    const firstIdxThisMonth = records.findIndex(r=>r.date.startsWith(m));
+    const baseline = firstIdxThisMonth>0 ? records[firstIdxThisMonth-1] : mRecords[0];
     const result = { month: m.slice(5)+'月' };
     FUNDS.forEach(f => {
-      const fv = last[f.key]; const iv = first[f.key];
+      const fv = last[f.key]; const iv = baseline[f.key];
       result[f.key] = (fv!=null && iv!=null) ? parseFloat((fv-iv).toFixed(1)) : 0;
     });
     return result;
@@ -1702,10 +1697,12 @@ function getYearlyData(){
   const years = [...new Set(records.map(r=>r.date.slice(0,4)))].sort().slice(-12);
   return years.map(y => {
     const yRecords = records.filter(r=>r.date.startsWith(y));
-    const first = yRecords[0]; const last = yRecords[yRecords.length-1];
+    const last = yRecords[yRecords.length-1];
+    const firstIdxThisYear = records.findIndex(r=>r.date.startsWith(y));
+    const baseline = firstIdxThisYear>0 ? records[firstIdxThisYear-1] : yRecords[0];
     const result = { label: y+'年' };
     FUNDS.forEach(f => {
-      const fv = last[f.key]; const iv = first[f.key];
+      const fv = last[f.key]; const iv = baseline[f.key];
       result[f.key] = (fv!=null && iv!=null) ? parseFloat((fv-iv).toFixed(1)) : 0;
     });
     return result;
@@ -2070,6 +2067,33 @@ function mondayOfWeek(dateStr){
   const day = (d.getUTCDay()+6)%7;
   d.setUTCDate(d.getUTCDate()-day);
   return d.toISOString().slice(0,10);
+}
+
+/* 期間キー（週/月/年）を返す */
+function getPeriodKey(dateStr, granularity){
+  if(granularity==='week') return getISOWeekKey(dateStr);
+  if(granularity==='month') return dateStr.slice(0,7);
+  return dateStr.slice(0,4);
+}
+
+/* 「前の期間の最後の記録」を基準に、「今の期間の最後の記録」との差を見る共通ロジック。
+   週間=先週金曜→今週金曜、月間=先月末→今月末、年間=昨年末→今年末、という考え方に統一。 */
+function computePeriodChange(granularity){
+  if(records.length<2) return null;
+  const periodMap={};
+  records.forEach((r,i)=>{
+    const k=getPeriodKey(r.date, granularity);
+    (periodMap[k]=periodMap[k]||[]).push(i);
+  });
+  const keys=Object.keys(periodMap).sort();
+  const curKey=keys[keys.length-1];
+  const curIdxs=periodMap[curKey];
+  const curRecord=records[curIdxs[curIdxs.length-1]];
+  if(keys.length<2) return null;
+  const prevKey=keys[keys.length-2];
+  const prevIdxs=periodMap[prevKey];
+  const prevRecord=records[prevIdxs[prevIdxs.length-1]];
+  return { curRecord, prevRecord, curKey };
 }
 
 /* records[0]（運用開始）を基準にした、指定ファンドの入出金調整済み累計増加額（idx時点まで） */
