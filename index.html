@@ -157,6 +157,7 @@ td:first-child { text-align:left; color:#B9C6DC; }
     <span id="save-status"></span>
   </div>
   <h1>投資信託デイリーチェック</h1>
+  <div id="sync-info" style="font-size:13px;color:#93A3BD;margin-bottom:10px"></div>
 
   <div id="signal-bar">
     <div class="sig-top" onclick="toggleSignalDetail()" style="cursor:pointer">
@@ -658,6 +659,7 @@ async function forceResyncAll(btn){
   records.forEach(r=>enqueueSync(r));
 
   let sent=0, failed=0;
+  setSyncQueue(getSyncQueue().sort((a,b)=>String(b.date).localeCompare(String(a.date))));
   const q=getSyncQueue();
   const remaining=[];
   for(const payload of q){
@@ -686,7 +688,71 @@ async function forceResyncAll(btn){
   if(btn) btn.disabled=false;
 }
 
+let serverLastDate = null;
+let lastSyncError = false;
+
+function updateSyncInfo(){
+  const el = document.getElementById('sync-info');
+  if(!el) return;
+  const q = getSyncQueue().length;
+  const localLast = records.length ? records[records.length-1].date : '―';
+  let html = '端末の最新: ' + localLast + ' ／ サーバーの最新: ' + (serverLastDate || '確認中');
+  if(q > 0){
+    html += ' <span style="color:#F59E0B;font-weight:700">⚠ 未送信 ' + q + '件</span>';
+  } else if(lastSyncError){
+    html += ' <span style="color:#F59E0B;font-weight:700">⚠ 同期できていません</span>';
+  } else if(serverLastDate && serverLastDate === localLast){
+    html += ' <span style="color:#10B981">✓ 一致</span>';
+  } else if(serverLastDate){
+    html += ' <span style="color:#F59E0B;font-weight:700">⚠ 端末とサーバーが違います</span>';
+  }
+  el.innerHTML = html;
+}
+
+async function fetchServerLastDate(){
+  try{
+    const url = SYNC_URL + '?token=' + SYNC_TOKEN + '&mode=dashboard_pull&since=';
+    const res = await fetch(url);
+    const data = await res.json();
+    if(!data || !Array.isArray(data.records)) return false;
+    let max = null;
+    data.records.forEach(r=>{
+      if(r.deleted) return;
+      const d = String(r.date).slice(0,10);
+      if(!max || d > max) max = d;
+    });
+    serverLastDate = max;
+    return true;
+  }catch(e){ return false; }
+}
+
 async function syncNow(){
+  const s = document.getElementById('save-status');
+  lastSyncError = false;
+  try{
+    await flushSyncQueue();
+    const changed = await pullFromServer();
+    if(changed) renderAll();
+    const ok = await fetchServerLastDate();
+    if(!ok) lastSyncError = true;
+  }catch(e){
+    lastSyncError = true;
+  }
+  if(getSyncQueue().length > 0) lastSyncError = true;
+  updateSyncInfo();
+  if(s){
+    if(lastSyncError){
+      s.textContent = '⚠️ 同期できていません';
+      s.style.color = '#F59E0B';
+    } else {
+      s.textContent = '☁️ 同期済み';
+      s.style.color = '#10B981';
+      setTimeout(()=>{ if(s.textContent === '☁️ 同期済み') s.textContent = ''; }, 2000);
+    }
+  }
+}
+
+async function syncNowOld(){
   const s=document.getElementById('save-status');
   try{
     await flushSyncQueue();
@@ -782,6 +848,7 @@ function init(){
     sp500El.addEventListener('paste', handleMultiPaste);
   }
   renderAll();
+  updateSyncInfo();
   setTimeout(syncNow, 300);
 }
 
@@ -943,6 +1010,8 @@ function commitEntry(entry){
   saveRecords(); clearForm(); renderAll();
   const savedRec = records.find(r=>r.date===entry.date) || entry;
   enqueueSync(savedRec);
+  updateSyncInfo();
+  setTimeout(syncNow, 4000);
   flushSyncQueue();
 }
 function clearForm(){
