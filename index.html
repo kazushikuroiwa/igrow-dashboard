@@ -380,6 +380,8 @@ td:first-child { text-align:left; color:#B9C6DC; }
 
       <div style="margin-top:18px;border-top:1px solid #334155;padding-top:14px">
         <div style="font-size:15px;font-weight:700;color:#F1F5F9;margin-bottom:10px">☁️ サーバー同期</div>
+        <button onclick="diffSync(this)" style="width:100%;padding:10px;background:#1E3A5F;border:1px solid #3B82F6;border-radius:8px;color:#3B82F6;font-size:16px;cursor:pointer;margin-bottom:6px">🔍 サーバーにない記録だけ送信（おすすめ）</button>
+        <div style="font-size:13px;color:#93A3BD;margin-bottom:14px">サーバーと見比べて、足りない記録や端末だけで変更した記録だけを、新しい日付から送ります。通常はこちらを使ってください。</div>
         <button onclick="forceResyncAll(this)" style="width:100%;padding:10px;background:#1E3A5F;border:1px solid #10B981;border-radius:8px;color:#10B981;font-size:16px;cursor:pointer;margin-bottom:6px">🔄 全記録をサーバーへ再送信</button>
         <div style="font-size:13px;color:#93A3BD">今この端末にある全ての記録を、サーバーが持っていなくても・古くても、強制的に上書き送信します。「サーバーに反映されていない記録がある」と思った時に使ってください。</div>
         <div id="resync-status" style="text-align:center;font-size:14px;margin-top:6px;display:none"></div>
@@ -659,6 +661,7 @@ async function forceResyncAll(btn){
   records.forEach(r=>enqueueSync(r));
 
   let sent=0, failed=0;
+  await acquireWakeLock();
   setSyncQueue(getSyncQueue().sort((a,b)=>String(b.date).localeCompare(String(a.date))));
   const q=getSyncQueue();
   const remaining=[];
@@ -686,6 +689,95 @@ async function forceResyncAll(btn){
     setTimeout(()=>st.style.display='none', 5000);
   }
   if(btn) btn.disabled=false;
+  releaseWakeLock();
+}
+
+let _wakeLock = null;
+let _wakeWanted = false;
+
+async function acquireWakeLock(){
+  _wakeWanted = true;
+  try{
+    if('wakeLock' in navigator && !_wakeLock){
+      _wakeLock = await navigator.wakeLock.request('screen');
+      _wakeLock.addEventListener('release', function(){ _wakeLock = null; });
+    }
+  }catch(e){ _wakeLock = null; }
+}
+
+function releaseWakeLock(){
+  _wakeWanted = false;
+  try{ if(_wakeLock) _wakeLock.release(); }catch(e){}
+  _wakeLock = null;
+}
+
+document.addEventListener('visibilitychange', function(){
+  if(document.visibilityState === 'visible' && _wakeWanted) acquireWakeLock();
+});
+
+function normNum(v){ return (v === null || v === undefined || v === '') ? null : Number(v); }
+
+function sameRecord(a, b){
+  if(String(a.date).slice(0,10) !== String(b.date).slice(0,10)) return false;
+  if((a.memo || '') !== (b.memo || '')) return false;
+  return FUNDS.every(function(f){
+    return normNum(a[f.key]) === normNum(b[f.key])
+      && (Number(a['in_' + f.key]) || 0) === (Number(b['in_' + f.key]) || 0)
+      && (Number(a['out_' + f.key]) || 0) === (Number(b['out_' + f.key]) || 0);
+  });
+}
+
+async function diffSync(btn){
+  const st = document.getElementById('resync-status');
+  function say(msg, color){
+    if(st){ st.style.display = 'block'; st.style.color = color || '#B9C6DC'; st.textContent = msg; }
+  }
+  if(btn) btn.disabled = true;
+  await acquireWakeLock();
+  try{
+    say('サーバーの記録を確認中...');
+    const res = await fetch(SYNC_URL + '?token=' + SYNC_TOKEN + '&mode=dashboard_pull&since=');
+    const data = await res.json();
+    if(!data || !Array.isArray(data.records)) throw new Error('サーバーの応答が正しくありません');
+    const serverMap = {};
+    data.records.forEach(function(r){ serverMap[String(r.id)] = r; });
+
+    const targets = [];
+    records.forEach(function(r){
+      const s = serverMap[String(r.id)];
+      if(!s){ targets.push(r); return; }
+      if(s.deleted === true || s.deleted === 'TRUE' || s.deleted === 'true') return;
+      if(!r.updatedAt && !sameRecord(r, s)) targets.push(r);
+    });
+    targets.sort(function(a, b){ return String(b.date).localeCompare(String(a.date)); });
+
+    if(targets.length === 0){
+      say('✅ 送るものはありません（サーバーと一致しています）', '#10B981');
+    } else {
+      let sent = 0, failed = 0;
+      const sentIds = {};
+      for(const r of targets){
+        const updatedAt = await pushPayloadToServer(recordToSyncPayload(r));
+        if(updatedAt){
+          sent++; r.updatedAt = updatedAt; sentIds[String(r.id)] = true;
+        } else {
+          failed++; enqueueSync(r);
+        }
+        say('送信中... ' + (sent + failed) + '/' + targets.length + '件（新しい日付から）');
+      }
+      setSyncQueue(getSyncQueue().filter(function(x){ return !sentIds[String(x.id)]; }));
+      saveRecords();
+      if(failed === 0) say('✅ ' + sent + '件を送信しました', '#10B981');
+      else say('⚠️ ' + sent + '件送信、' + failed + '件失敗しました。もう一度押してください', '#F59E0B');
+    }
+    await fetchServerLastDate();
+    updateSyncInfo();
+  }catch(e){
+    say('⚠️ 失敗しました：' + (e && e.message ? e.message : e), '#F59E0B');
+  }finally{
+    releaseWakeLock();
+    if(btn) btn.disabled = false;
+  }
 }
 
 let serverLastDate = null;
